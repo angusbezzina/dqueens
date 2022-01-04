@@ -2,6 +2,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+Before you begin, you will need to make sure that you have npm installed on your machine (see [here](https://www.npmjs.com/))
+
 First, run the development server:
 
 ```bash
@@ -17,6 +19,20 @@ You can start editing the page by modifying `pages/index.tsx`. The page auto-upd
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+
+## Where can I change the data for the page (a note for Alexis)
+
+The site is broken up into components (reusable elements on the page), sections (the visible sections on the page) and pages (the overall page layouts).
+
+To edit the majority of the data on the page, you will need to update the files located in `lib/data`, specifically `services.tsx`, `openHours.tsx` and `labels.tsx`. 
+
+To edit the address details at the bottom, you can make edits to the code in `components/addressBar.tsx`.
+
+You can change the location using the `lib/data/constants.tsx` file.
+
+The AR component is hosted elsewhere, but if you no longer want it there, go to `components/nav.tsx` and remove the content inside the `<a></a>` tags along with the tags themselves.
+
+If anything is unclear, just email or message me.
 
 ## Learn More
 
