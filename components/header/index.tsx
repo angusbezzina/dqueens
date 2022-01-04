@@ -8,7 +8,7 @@ import Nav from "components/nav";
 const Header = () => {
   const [active, setActive] = useState(false);
   const toggleActive = () => {
-    const scrollDistance = 300;
+    const scrollDistance = 110;
     const scrolled = window.scrollY;
 
     if (scrolled > scrollDistance) {
