@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 
-import { googleApiKey, dqueensLocation, queretaroCenter } from "lib/data/constants";
+import { googleApiKey, dqueensLocation } from "lib/data/constants";
 
 const GoogleMap = () => {
   const googlemap = useRef(null);
@@ -19,7 +19,7 @@ const GoogleMap = () => {
       const google = window.google;
       if (googlemap.current) {
         map = new google.maps.Map(googlemap.current, {
-          center: queretaroCenter,
+          center: dqueensLocation,
           zoom: 16,
           fullscreenControl: false, // remove the top-right button
           mapTypeControl: false, // remove the top-left buttons
