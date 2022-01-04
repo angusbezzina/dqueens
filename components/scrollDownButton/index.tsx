@@ -7,7 +7,7 @@ const ScrollDownButton = ({ text, classNames }: ScrollDownProps) => {
   const scrollIntoView = () => {
     const pageHeight = window.innerHeight;
     const pageWidth = window.innerWidth;
-    const distanceToScroll = pageWidth > 768 ? pageHeight - 80 : 464;  
+    const distanceToScroll = pageWidth >= 768 ? pageHeight - 80 : 464;  
     window.scrollTo({
       top: distanceToScroll,
       behavior: "smooth",

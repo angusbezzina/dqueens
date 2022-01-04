@@ -15,7 +15,7 @@ const AddressBar = () => {
   const language = languageState.state.language;
 
   return (
-    <div className="md:absolute md:bottom-0 md:left-0 px-2 py-10 md:p-10 shadow-lg bg-white w-full md:w-1/3 z-10">
+    <div className="md:absolute md:bottom-0 md:left-0 px-2 py-10 md:p-10 shadow-lg bg-white w-full md:w-1/2 xl:w-1/3 z-10">
       <h3>{sectionTitles.contact[language]}</h3>
       <address className="grid grid-cols-1 gap-5 bg-white">
         <a
