@@ -13,18 +13,20 @@ const GoogleMap = () => {
       libraries: ["places"],
     });
 
-    let map;
+    let map: any;
 
     loader.load().then(() => {
       const google = window.google;
-      map = new google.maps.Map(googlemap.current, {
-        center: queretaroCenter,
-        zoom: 16,
-        fullscreenControl: false, // remove the top-right button
-        mapTypeControl: false, // remove the top-left buttons
-        streetViewControl: false, // remove the pegman
-        zoomControl: false, // remove the bottom-right buttons
-      });
+      if (googlemap.current) {
+        map = new google.maps.Map(googlemap.current, {
+          center: queretaroCenter,
+          zoom: 16,
+          fullscreenControl: false, // remove the top-right button
+          mapTypeControl: false, // remove the top-left buttons
+          streetViewControl: false, // remove the pegman
+          zoomControl: false, // remove the bottom-right buttons
+        });
+      }
 
       new google.maps.Marker({
         position: dqueensLocation,
