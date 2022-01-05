@@ -9,7 +9,11 @@ const Nav = () => {
     <nav className="w-1/2 md:w-1/4 flex justify-end items-center">
       <ul className="flex items-center justify-end mr-5">
         <li>
-          <a href="#" className="ml-2 link-underline" title="AR Experience">
+          <a
+            href="https://angry-beaver-170c64.netlify.app"
+            className="ml-2 link-underline"
+            title="AR Experience"
+          >
             <FontAwesomeIcon icon={faCrown} />
           </a>
         </li>
