@@ -10,7 +10,7 @@ const Nav = () => {
       <ul className="flex items-center justify-end mr-5">
         <li>
           <a
-            href="https://angry-beaver-170c64.netlify.app"
+            href="https://ar.dqueens.com.mx/"
             className="ml-2 link-underline"
             title="AR Experience"
           >
