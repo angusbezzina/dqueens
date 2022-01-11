@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 
-import { googleApiKey, dqueensLocation } from "lib/data/constants";
+import { googleApiKey, dqueensLocation } from "lib/constants";
 
 const GoogleMap = () => {
   const googlemap = useRef(null);

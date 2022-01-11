@@ -1,7 +1,7 @@
 import {
   getStoredLanguage,
   getNavigatorLanguage,
-} from "lib/helpers/miscellaneous";
+} from "lib/helpers";
 
 export type Language = "english" | "espanol";
 

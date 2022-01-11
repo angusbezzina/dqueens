@@ -3,7 +3,7 @@ import {
   Language,
   setPreferredLanguage,
   getPreferredLanguage,
-} from "lib/helpers/language";
+} from "lib/language";
 
 interface LanguageState {
   language: Language;
