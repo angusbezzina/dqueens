@@ -13,9 +13,7 @@ const Services = (serviceData: any) => {
   const languageState = useLanguage();
   const language = languageState.state.language;
   const { serviceList } = serviceData;
-
-  console.log(serviceList, serviceData);
-
+  
   const serviceSlides = serviceList.map((service: any, index: number) => {
     const {
       attributes: { titulo, slug, fotoPrincipal },
@@ -28,8 +26,8 @@ const Services = (serviceData: any) => {
     } = fotoPrincipal;
 
     return (
-      <Link href={`/services/${slug}`} key={index}>
-        <a className="flex flex-col p-5 items-center rounded-lg justify-center shadow-none hover:bg-white hover:shadow-md">
+      <Link href={`/servicios/${slug}`} key={index}>
+        <a className="flex flex-col m-2 p-5 items-center rounded-lg justify-center shadow-none hover:bg-white hover:shadow-md">
           {fotoUrl && (
             <Image
               alt={titulo}
@@ -47,7 +45,7 @@ const Services = (serviceData: any) => {
 
   return (
     <Container classNames="px-2 py-10 md:p-10 border-bottom-gold">
-      <Link href="/services">
+      <Link href="/servicios">
         <a className="block text-center">
           <h3 className="inline-block link-underline text-center">
             {sectionTitles.services[language]}

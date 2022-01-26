@@ -1,23 +1,43 @@
 import React, { ReactNode } from "react";
-import Slider from "react-slick";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+
+import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 
 interface CarouselProps {
   slides: ReactNode[];
 }
 
 const Carousel = ({ slides }: CarouselProps) => {
-  const settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-  };
-
   return (
-    <Slider {...settings}>
-      {slides}
-    </Slider>
+    <Splide
+      options={{
+        perPage: 3,
+        breakpoints: {
+          768: {
+            perPage: 1,
+          },
+        },
+        drag: true,
+        lazyLoad: true,
+        autoplay: true,
+        pagination: false,
+        rewind: true,
+        gap: "3rem",
+        trimSpace: false,
+        speed: 400,
+        padding: "0.5rem",
+        classes: {
+          arrows: "splide__arrows carousel-arrows",
+          arrow: "splide__arrow carousel-arrow",
+          prev: "splide__arrow--prev carousel-prev",
+          next: "splide__arrow--next carousel-next",
+        },
+      }}
+    >
+      {slides.map((slide, index) => (
+        <SplideSlide key={index}>{slide}</SplideSlide>
+      ))}
+    </Splide>
   );
 };
 

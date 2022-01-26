@@ -61,7 +61,6 @@ const Blog: NextPage = ({
             attributes: {
               titulo,
               slug,
-              contenido,
               fotoPrincipal: {
                 data: {
                   attributes: { url: fotoUrl },

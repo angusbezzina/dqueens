@@ -19,6 +19,10 @@ export const sectionTitles = {
     english: "Articles",
     espanol: "Articulos",
   },
+  prices: {
+    english: "Price",
+    espanol: "Precio",
+  },
 };
 
 export const heroTitles = {
@@ -29,6 +33,10 @@ export const heroTitles = {
 };
 
 export const buttonLabels = {
+  bookNow: {
+    english: "Book now",
+    espanol: "Reservar ahora",
+  },
   scrollDown: {
     english: "Learn more",
     espanol: "Aprende más",

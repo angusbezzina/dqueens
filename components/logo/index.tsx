@@ -2,11 +2,13 @@ import Image from "next/image";
 
 interface LogoProps {
   size: "large" | "small";
+  className?: string;
 }
 
-const Logo = ({ size }: LogoProps) => {
+const Logo = ({ size, className }: LogoProps) => {
   return size === "large" ? (
     <Image
+      className={className}
       src="/dqueens.png"
       alt="D'Queens Logo Header"
       layout="fixed"
@@ -15,6 +17,7 @@ const Logo = ({ size }: LogoProps) => {
     />
   ) : (
     <Image
+      className={className}
       src="/dqueens.png"
       alt="D'Queens Logo Footer"
       layout="fixed"

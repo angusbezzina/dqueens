@@ -18,6 +18,7 @@ import { getStrapiCollection } from "lib/strapi-api";
 
 const Home: NextPage = ({
   contenido,
+  informacionDelContacto,
   servicios,
   testimonials,
   video,
@@ -45,7 +46,7 @@ const Home: NextPage = ({
   getStoredLanguage();
 
   return (
-    <Page classNames="relative">
+    <Page classNames="relative" socialDetails={informacionDelContacto?.data}>
       <Hero
         title={titulo}
         subtitle={subtitulo}
@@ -56,7 +57,7 @@ const Home: NextPage = ({
       <About content={contenidoPrincipal} />
       <Services serviceList={servicios?.data} />
       <Testimonials testimonialList={testimonials?.data} />
-      <Contact />
+      <Contact contactDetails={informacionDelContacto?.data} />
       <ScrollToTopButton />
     </Page>
   );
@@ -67,8 +68,9 @@ export const getStaticProps: GetStaticProps = async () => {
   const servicios = await getStrapiCollection("servicios");
   const testimonials = await getStrapiCollection("testimonios");
   const video = await getVideo(5524244);
+  const informacionDelContacto = await getStrapiCollection("informacion-del-contacto");
 
-  if (!contenido) {
+  if (!contenido || !servicios || !informacionDelContacto) {
     return {
       notFound: true,
     };
@@ -76,10 +78,11 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      video,
-      testimonials,
-      servicios,
       contenido,
+      informacionDelContacto,
+      servicios,
+      testimonials,
+      video,
     },
   };
 };

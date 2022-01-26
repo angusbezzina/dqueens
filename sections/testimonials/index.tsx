@@ -28,18 +28,18 @@ const Testimonials = (testimonialData: any) => {
       return (
         <div
           key={index}
-          className="flex p-5 items-center bg-primary text-white rounded-lg justify-center text-center shadow-md"
+          className="flex flex-col p-5 items-center bg-primary text-white rounded-lg justify-center text-center shadow-md"
         >
           {fotoUrl && (
             <Image
-              className="object-cover oject-center border-hidden rounded-full"
+              className="object-cover object-center border-hidden rounded-full"
               src={urlBuilder(fotoUrl)}
               alt={titulo}
               height={200}
               width={200}
             />
           )}
-          <h6 className="mt-5 text-white underline underline-offset-8 decoration-secondary-100">
+          <h6 className="mt-5 text-white underline underline-offset-8 decoration-secondary-900">
             {titulo}
           </h6>
           <div>{comentario}</div>

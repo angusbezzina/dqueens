@@ -373,6 +373,27 @@ textarea {
   }
 }
 
+.max-w-xxs {
+  max-width: 200px;
+}
+
+// Splide carousel styles 
+
+.splide {
+  padding: 0 2rem;
+}
+
+.carousel-arrows {
+
+}
+
+.carousel-arrow.splide__arrow {
+  background-color: var(--secondaryColor);
+  svg {
+    fill: var(--whiteColor);
+  }
+}
+
 // Markdown styles
 
 .markdown-styles {
@@ -388,10 +409,6 @@ textarea {
 
     &:first-child {
       margin-top: 0;
-    }
-
-    @media screen and (min-width: 768px) {
-      color: var(--secondaryColor);
     }
   }
 }
