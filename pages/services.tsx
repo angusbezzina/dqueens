@@ -8,19 +8,15 @@ import { useLanguage } from "contexts/language";
 
 import About from "sections/about";
 import Contact from "sections/contact";
-import Services from "sections/services";
-import Testimonials from "sections/testimonials";
 
-import { getVideo } from "lib/pexels";
 import { buttonLabels } from "lib/data/labels";
 import { getStoredLanguage } from "lib/helpers";
 import { getStrapiCollection } from "lib/strapi-api";
+import Container from "components/container";
 
-const Home: NextPage = ({
+const Services: NextPage = ({
   contenido,
-  servicios,
-  testimonials,
-  video,
+  services,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const languageState = useLanguage();
   const language = languageState.state.language;
@@ -50,12 +46,31 @@ const Home: NextPage = ({
         title={titulo}
         subtitle={subtitulo}
         photo={fotoUrl}
-        video={video?.video_files[0]?.link}
         scrollButton={buttonLabels.scrollDown[language]}
       />
       <About content={contenidoPrincipal} />
-      <Services serviceList={servicios?.data} />
-      <Testimonials testimonialList={testimonials?.data} />
+      <Container classNames="px-2 py-10 md:p-10">
+        {services?.data.map((service: any, index: number) => {
+          const {
+            attributes: {
+              titulo,
+              extracto,
+              precio,
+              contenido,
+              fotoPrincipal: {
+                data: {
+                  attributes: { url: fotoUrl },
+                },
+              },
+            },
+          } = service;
+          return (
+            <div key={index} className="grid grid-cols-1 md:grid-cols-3">
+              <h2>{titulo}</h2>
+            </div>
+          );
+        })}
+      </Container>
       <Contact />
       <ScrollToTopButton />
     </Page>
@@ -63,10 +78,8 @@ const Home: NextPage = ({
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const contenido = await getStrapiCollection("inicio");
-  const servicios = await getStrapiCollection("servicios");
-  const testimonials = await getStrapiCollection("testimonios");
-  const video = await getVideo(5524244);
+  const contenido = await getStrapiCollection("servicios-de-belleza");
+  const services = await getStrapiCollection("servicios");
 
   if (!contenido) {
     return {
@@ -76,12 +89,10 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      video,
-      testimonials,
-      servicios,
+      services,
       contenido,
     },
   };
 };
 
-export default Home;
+export default Services;

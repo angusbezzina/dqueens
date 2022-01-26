@@ -1,3 +1,5 @@
+import Container from "components/container";
+
 import { formatMarkdown } from "lib/markdown";
 
 interface AboutProps {
@@ -6,14 +8,13 @@ interface AboutProps {
 
 const About = ({ content }: AboutProps) => {
   return (
-    <section className="">
+    <Container classNames="px-2 py-10 md:p-10 text-center border-bottom-gold">
       <div
-        className="mb-10 px-4"
         dangerouslySetInnerHTML={{
           __html: content ? formatMarkdown(content) : "",
         }}
       />
-    </section>
+    </Container>
   );
 };
 

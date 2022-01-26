@@ -9,16 +9,14 @@ const EnglishLanguageButton = () => {
   return (
     <button
       className={`${
-        isActive
-          ? "bg-secondary"
-          : "bg-white"
-      } px-3 py-2 rounded-tr rounded-br`}
+        isActive ? "bg-secondary" : "bg-white"
+      } px-3 py-2 rounded-tr rounded-br border-secondary`}
       onClick={() => {
         setLanguage("english");
       }}
       title="English"
     >
-      🇬🇧
+      🇺🇸
     </button>
   );
 };

@@ -1,3 +1,5 @@
+import { STRAPI_API_URL } from "./constants";
+
 export const getStoredLanguage = () => {
   if(typeof window !== "undefined") {
     const storedLanguage = window.localStorage.getItem("user_language");
@@ -13,3 +15,7 @@ export const getNavigatorLanguage = () => {
     return navigatorLanguage;
   }
 };
+
+export const urlBuilder = (urlPartial: string) => {
+  return STRAPI_API_URL + urlPartial;
+}

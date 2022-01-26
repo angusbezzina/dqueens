@@ -42,18 +42,18 @@ h6 {
   font-weight: normal;
   text-transform: uppercase;
   letter-spacing: 1px;
-  text-decoration: underline;
-  text-decoration-color: var(--secondaryColor);
-  text-underline-offset: 0.5rem;
-  text-decoration-thickness: 0.15rem;
 }
 
-h1.feature-title,
-h2.feature-title,
-h3.feature-title,
-h4.feature-title,
-h5.feature-title,
-h6.feature-title {
+// h1,
+// h2,
+// h3 {
+//   text-decoration: underline;
+//   text-decoration-color: var(--secondaryColor);
+//   text-underline-offset: 0.5rem;
+//   text-decoration-thickness: 0.15rem;
+// }
+
+.feature-title {
   color: var(--primaryColor);
   text-decoration: underline;
   text-decoration-color: var(--secondaryColor);
@@ -61,11 +61,34 @@ h6.feature-title {
   text-decoration-thickness: 0.2rem;
 }
 
+.feature-title-photo {
+  color: var(--whiteColor);
+  text-decoration: underline;
+  text-decoration-color: var(--secondaryColor);
+  text-underline-offset: 1rem;
+  text-decoration-thickness: 0.2rem;
+
+  @media screen and (min-width: 768px) {
+    color: var(--primaryColor);
+  }
+}
+
 .feature-subtitle {
   text-transform: capitalize;
   text-decoration: none;
   color: var(--colorWhite);
   margin-bottom: 0;
+}
+
+.single-post-title {
+  font-size: 2rem;
+  line-height: 1.6;
+  text-underline-offset: 0.5rem;
+
+  @media screen and (min-width: 768px) {
+    font-size: 2.5rem;
+    max-width: 95%;
+  }
 }
 
 h1 {
@@ -138,7 +161,29 @@ textarea {
   min-height: 40rem;
 }
 
-.blue-shade {
+.border-bottom-gold {
+  position: relative;
+  z-index: 0;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    right: 5%;
+    height: 1px;
+    width: 90%;
+    background-color: var(--secondaryColor);
+  }
+
+  &:last-child {
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.silver-shade {
   position: relative;
   z-index: 0;
 
@@ -251,7 +296,7 @@ textarea {
   }
 
   h1.feature-title {
-    text-underline-offset: 2rem;
+    text-underline-offset: 1rem;
   }
 
   h2 {
@@ -325,5 +370,28 @@ textarea {
 
   100% {
     transform: translateY(0);
+  }
+}
+
+// Markdown styles
+
+.markdown-styles {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-transform: none;
+    margin: 2rem 0 1rem;
+    padding-bottom: 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    @media screen and (min-width: 768px) {
+      color: var(--secondaryColor);
+    }
   }
 }
