@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import Container from "components/container";
 import Carousel from "components/carousel";
@@ -7,13 +8,12 @@ import Carousel from "components/carousel";
 import { sectionTitles } from "lib/data/labels";
 import { urlBuilder } from "lib/helpers";
 
-import { useLanguage } from "contexts/language";
-
 const Services = (serviceData: any) => {
-  const languageState = useLanguage();
-  const language = languageState.state.language;
+  const { locale } = useRouter();
+  const language = locale === "en" ? "en" : "es-MX";
+
   const { serviceList } = serviceData;
-  
+
   const serviceSlides = serviceList.map((service: any, index: number) => {
     const {
       attributes: { titulo, slug, fotoPrincipal },
@@ -27,7 +27,7 @@ const Services = (serviceData: any) => {
 
     return (
       <Link href={`/servicios/${slug}`} key={index}>
-        <a className="flex flex-col m-2 p-5 items-center rounded-lg justify-center shadow-none hover:bg-white hover:shadow-md">
+        <a className="flex flex-col m-4 p-5 items-center rounded-lg justify-center shadow-none hover-text-white hover:bg-primary hover:shadow-md">
           {fotoUrl && (
             <Image
               alt={titulo}

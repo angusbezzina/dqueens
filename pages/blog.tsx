@@ -1,27 +1,27 @@
 import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 import Page from "components/page";
 import Hero from "components/hero";
 import ScrollToTopButton from "components/scrollToTopButton";
 
-import { useLanguage } from "contexts/language";
-
 import About from "sections/about";
 import Contact from "sections/contact";
 
 import { buttonLabels, sectionTitles } from "lib/data/labels";
-import { getStoredLanguage, urlBuilder } from "lib/helpers";
+import { urlBuilder } from "lib/helpers";
 import { getStrapiCollection } from "lib/strapi-api";
 import Container from "components/container";
 
 const Blog: NextPage = ({
-  contenido,
   articulos,
+  contenido,
+  informacionDelContacto,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const languageState = useLanguage();
-  const language = languageState.state.language;
+  const { locale } = useRouter();
+    const language = locale === "en" ? "en" : "es-MX";
 
   const {
     data: {
@@ -40,10 +40,8 @@ const Blog: NextPage = ({
     },
   } = fotoPrincipal;
 
-  getStoredLanguage();
-
   return (
-    <Page classNames="relative">
+    <Page classNames="relative" socialDetails={informacionDelContacto?.data}>
       <Hero
         title={titulo}
         subtitle={subtitulo}
@@ -56,7 +54,6 @@ const Blog: NextPage = ({
           {sectionTitles.articles[language]}
         </h2>
         {articulos?.data.map((articulo: any, index: number) => {
-          console.log(articulo);
           const {
             attributes: {
               titulo,
@@ -70,7 +67,7 @@ const Blog: NextPage = ({
           } = articulo;
           return (
             <Link key={index} href={`/blog/${slug}`}>
-              <a className="p-5 block flex flex-col justify-center items-center rounded-lg bg-primary bg-opacity-80 md:bg-white md:shadow-none md:hover:shadow-md">
+              <a className="p-5 block flex flex-col justify-center items-center hover-text-white rounded-lg text-white md:text-primary bg-primary md:bg-white md:hover:bg-primary md:hover:text-white md:shadow-none md:hover:shadow-md">
                 <div className="relative block h-48 w-full mb-5">
                   <Image
                     className="rounded-lg"
@@ -81,24 +78,28 @@ const Blog: NextPage = ({
                 </div>
                 <div>
                   <h6 className="text-white md:text-primary">{titulo}</h6>
-                  <span className="text-left text-white md:text-primary link-underline">{buttonLabels.readMore[language]}</span>
+                  <span className="text-left link-underline">
+                    {buttonLabels.readMore[language]}
+                  </span>
                 </div>
               </a>
             </Link>
           );
         })}
       </Container>
-      <Contact />
+      <Contact contactDetails={informacionDelContacto?.data} />
       <ScrollToTopButton />
     </Page>
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  const contenido = await getStrapiCollection("blog");
-  const articulos = await getStrapiCollection("articulos");
+export const getStaticProps: GetStaticProps = async (PageContext) => {
+  const { locale } = PageContext;
+  const contenido = await getStrapiCollection("blog", "*", locale);
+  const articulos = await getStrapiCollection("articulos", "*", locale);
+  const informacionDelContacto = await getStrapiCollection("informacion-del-contacto", "*", locale);
 
-  if (!contenido) {
+  if (!contenido || !articulos || !informacionDelContacto) {
     return {
       notFound: true,
     };
@@ -108,6 +109,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       articulos,
       contenido,
+      informacionDelContacto,
     },
   };
 };

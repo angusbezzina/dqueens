@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPhone,
@@ -5,8 +6,6 @@ import {
   faMapMarkerAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
-
-import { useLanguage } from "contexts/language";
 
 import { sectionTitles } from "lib/data/labels";
 import { formatMarkdown } from "lib/markdown";
@@ -16,10 +15,8 @@ interface AddressBarProps {
 }
 
 const AddressBar = ({ contactDetails }: AddressBarProps ) => {
-  const languageState = useLanguage();
-  const language = languageState.state.language;
-
-  console.log(contactDetails);
+  const { locale } = useRouter();
+  const language = locale === 'en' ? 'en' : 'es-MX';
 
   const {
     attributes: {

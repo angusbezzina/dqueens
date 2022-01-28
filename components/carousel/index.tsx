@@ -13,6 +13,9 @@ const Carousel = ({ slides }: CarouselProps) => {
       options={{
         perPage: 3,
         breakpoints: {
+          1024: {
+            perPage: 2,
+          },
           768: {
             perPage: 1,
           },
@@ -22,7 +25,6 @@ const Carousel = ({ slides }: CarouselProps) => {
         autoplay: true,
         pagination: false,
         rewind: true,
-        gap: "3rem",
         trimSpace: false,
         speed: 400,
         padding: "0.5rem",

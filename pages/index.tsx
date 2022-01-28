@@ -1,10 +1,9 @@
 import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
+import { useRouter } from "next/router";
 
 import Page from "components/page";
 import Hero from "components/hero";
 import ScrollToTopButton from "components/scrollToTopButton";
-
-import { useLanguage } from "contexts/language";
 
 import About from "sections/about";
 import Contact from "sections/contact";
@@ -13,7 +12,6 @@ import Testimonials from "sections/testimonials";
 
 import { getVideo } from "lib/pexels";
 import { buttonLabels } from "lib/data/labels";
-import { getStoredLanguage } from "lib/helpers";
 import { getStrapiCollection } from "lib/strapi-api";
 
 const Home: NextPage = ({
@@ -23,8 +21,8 @@ const Home: NextPage = ({
   testimonials,
   video,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const languageState = useLanguage();
-  const language = languageState.state.language;
+  const { locale } = useRouter();
+  const language = locale === 'en' ? 'en' : 'es-MX';
 
   const {
     data: {
@@ -42,8 +40,6 @@ const Home: NextPage = ({
       attributes: { url: fotoUrl },
     },
   } = fotoPrincipal;
-
-  getStoredLanguage();
 
   return (
     <Page classNames="relative" socialDetails={informacionDelContacto?.data}>
@@ -63,12 +59,13 @@ const Home: NextPage = ({
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  const contenido = await getStrapiCollection("inicio");
-  const servicios = await getStrapiCollection("servicios");
-  const testimonials = await getStrapiCollection("testimonios");
+export const getStaticProps: GetStaticProps = async (PageContext) => {
+  const { locale } = PageContext;
+  const contenido = await getStrapiCollection("inicio", "*", locale);
+  const servicios = await getStrapiCollection("servicios", "*", locale);
+  const testimonials = await getStrapiCollection("testimonios", "*", locale);
   const video = await getVideo(5524244);
-  const informacionDelContacto = await getStrapiCollection("informacion-del-contacto");
+  const informacionDelContacto = await getStrapiCollection("informacion-del-contacto","*", locale);
 
   if (!contenido || !servicios || !informacionDelContacto) {
     return {

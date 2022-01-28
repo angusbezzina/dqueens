@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 import Container from "components/container";
 import Carousel from "components/carousel";
@@ -6,11 +7,10 @@ import Carousel from "components/carousel";
 import { sectionTitles } from "lib/data/labels";
 import { urlBuilder } from "lib/helpers";
 
-import { useLanguage } from "contexts/language";
-
 const Testimonials = (testimonialData: any) => {
-  const languageState = useLanguage();
-  const language = languageState.state.language;
+  const { locale } = useRouter();
+  const language = locale === "en" ? "en" : "es-MX";
+
   const { testimonialList } = testimonialData;
 
   const testimonialSlides = testimonialList.map(
@@ -39,7 +39,7 @@ const Testimonials = (testimonialData: any) => {
               width={200}
             />
           )}
-          <h6 className="mt-5 text-white underline underline-offset-8 decoration-secondary-900">
+          <h6 className="mt-5 text-white underline underline-offset-8 decoration-secondary">
             {titulo}
           </h6>
           <div>{comentario}</div>

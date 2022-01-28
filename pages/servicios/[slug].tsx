@@ -11,24 +11,23 @@ import Page from "components/page";
 import Hero from "components/hero";
 import ScrollToTopButton from "components/scrollToTopButton";
 
-import { useLanguage } from "contexts/language";
-
 import Testimonials from "sections/testimonials";
+import Contact from "sections/contact";
 
 import { buttonLabels, sectionTitles } from "lib/data/labels";
 import { formatMarkdown } from "lib/markdown";
-import { getStrapiCollection, getStrapiPostBySlug } from "lib/strapi-api";
+import { getStrapiCollection } from "lib/strapi-api";
 import Container from "components/container";
 
 const Service: NextPage = ({
+  informacionDelContacto,
   service,
   testimonials,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const router = useRouter();
-  const languageState = useLanguage();
-  const language = languageState.state.language;
+  const { isFallback, locale } = useRouter();
+  const language = locale === "en" ? "en" : "es-MX";
 
-  if (router.isFallback) {
+  if (isFallback) {
     return <div>Loading...</div>;
   }
 
@@ -47,7 +46,7 @@ const Service: NextPage = ({
   } = service;
 
   return (
-    <Page classNames="relative">
+    <Page classNames="relative" socialDetails={informacionDelContacto?.data}>
       <Hero
         isSinglePost
         photo={fotoUrl}
@@ -87,17 +86,32 @@ const Service: NextPage = ({
         </div>
       </Container>
       <Testimonials testimonialList={testimonials?.data} />
+      <Contact contactDetails={informacionDelContacto?.data} />
       <ScrollToTopButton />
     </Page>
   );
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const services = await getStrapiCollection("servicios");
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
+  const services = await getStrapiCollection("servicios", "*");
+  let paths: any[] = [];
 
-  const paths = services?.data.map((service: any) => ({
-    params: { slug: slugify(service?.attributes?.titulo, { lower: true }) },
-  }));
+  services?.data.forEach((service: any) => {
+    if (locales) {
+      for (const locale of locales) {
+        paths.push({
+          params: {
+            slug: slugify(service?.attributes?.titulo, { lower: true }),
+          },
+          locale,
+        });
+      }
+    } else {
+      paths = services?.data.map((service: any) => ({
+        params: { slug: slugify(service?.attributes?.titulo, { lower: true }) },
+      }));
+    }
+  });
 
   return {
     paths,
@@ -105,13 +119,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async (PageContext) => {
+  const { params, locale } = PageContext;
   let slug = params?.slug;
   slug = typeof slug === "string" ? slug : "";
 
-  let service = await getStrapiPostBySlug("servicios", slug);
+  let service = await getStrapiCollection("servicios", "*", locale, slug);
 
-  const testimonials = await getStrapiCollection("testimonios");
+  const testimonials = await getStrapiCollection("testimonios", "*", locale);
+  const informacionDelContacto = await getStrapiCollection(
+    "informacion-del-contacto",
+    "*",
+    locale
+  );
 
   if (Array.isArray(service?.data) && service?.data.length === 1) {
     service = service?.data[0];
@@ -119,8 +139,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     throw new Error("Unexpected number of posts received");
   }
 
+  if (!service || !informacionDelContacto) {
+    return {
+      notFound: true,
+    };
+  }
+
+  console.log("service object", service);
+
   return {
     props: {
+      informacionDelContacto,
       service,
       testimonials,
     },

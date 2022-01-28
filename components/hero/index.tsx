@@ -19,7 +19,7 @@ const Hero = ({ title, isSinglePost, subtitle, photo, video, scrollButton }: Her
 
   if (video) {
     return (
-      <div className="relative h-108 md:h-screen w-full white-shade">
+      <div className="relative h-108 md:h-screen w-full black-shade">
         <Container classNames="p-2 md:py-2 md:px-10 relative z-10 text-white">
           <h1 className="mt-12 md:mt-0 feature-title">{title}</h1>
           <h5 className="feature-subtitle">{subtitle}</h5>
@@ -45,7 +45,7 @@ const Hero = ({ title, isSinglePost, subtitle, photo, video, scrollButton }: Her
   }
 
   return (
-    <div className="relative flex items-center h-108 max-h-screen w-full">
+    <div className="relative flex items-center h-108 max-h-screen black-shade w-full">
       <Container classNames="relative z-10 p-2 md:py-2 md:w-1/2 md:px-10 text-white">
         <h1 className={`feature-title-photo text-white md:text-primary mt-12 md:mt-0 ${isSinglePost ? 'single-post-title' : '' }`}>
           {title}

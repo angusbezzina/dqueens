@@ -1,10 +1,9 @@
 import React from "react";
-
-import { LanguageContext } from "contexts/language";
+import { useRouter } from "next/router";
 
 const SpanishLanguageButton = () => {
-  const { state, setLanguage } = React.useContext(LanguageContext);
-  const isActive = state.language === "espanol";
+  const { locale, asPath, push } = useRouter();
+  const isActive = locale === "es-MX";
 
   return (
     <button
@@ -14,7 +13,7 @@ const SpanishLanguageButton = () => {
           : "bg-white"
       } px-3 py-2 rounded-tl rounded-bl`}
       onClick={() => {
-        setLanguage("espanol");
+        push(asPath, asPath, { locale: "es-MX" });
       }}
       title="Espanol"
     >

@@ -1,28 +1,28 @@
 import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import Carousel from "components/carousel";
 import Hero from "components/hero";
 import Page from "components/page";
 import ScrollToTopButton from "components/scrollToTopButton";
 
-import { useLanguage } from "contexts/language";
-
 import About from "sections/about";
 import Contact from "sections/contact";
 
 import { buttonLabels, sectionTitles } from "lib/data/labels";
-import { getStoredLanguage, urlBuilder } from "lib/helpers";
+import { urlBuilder } from "lib/helpers";
 import { getStrapiCollection } from "lib/strapi-api";
 import Container from "components/container";
 
 const Services: NextPage = ({
   contenido,
+  informacionDelContacto,
   services,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const languageState = useLanguage();
-  const language = languageState.state.language;
+  const { locale } = useRouter();
+    const language = locale === "en" ? "en" : "es-MX";
 
   const {
     data: {
@@ -41,8 +41,6 @@ const Services: NextPage = ({
     },
   } = fotoPrincipal;
 
-  getStoredLanguage();
-
   const serviceSlides = services?.data.map((service: any, index: number) => {
     const {
       attributes: { titulo, slug, extracto, fotoPrincipal },
@@ -56,7 +54,7 @@ const Services: NextPage = ({
 
     return (
       <Link href={`/servicios/${slug}`} key={index}>
-        <a className="flex flex-col p-5 items-center rounded-lg justify-center shadow-none hover:bg-white hover:shadow-md">
+        <a className="flex flex-col m-2 p-5 items-center rounded-lg justify-center shadow-none hover-text-white hover:bg-primary hover:text-white hover:shadow-md">
           {serviceFotoUrl && (
             <Image
               alt={titulo}
@@ -70,7 +68,7 @@ const Services: NextPage = ({
           <p className="text-center">
             {extracto}
           </p>
-          <span className="mt-5 text-primary link-underline">
+          <span className="mt-5 link-underline">
             {buttonLabels.bookNow[language]}
           </span>
         </a>
@@ -79,7 +77,7 @@ const Services: NextPage = ({
   });
 
   return (
-    <Page classNames="relative">
+    <Page classNames="relative" socialDetails={informacionDelContacto?.data}>
       <Hero
         title={titulo}
         subtitle={subtitulo}
@@ -90,17 +88,19 @@ const Services: NextPage = ({
       <Container classNames="px-2 py-10 md:p-10">
         <Carousel slides={serviceSlides} />
       </Container>
-      <Contact />
+      <Contact contactDetails={informacionDelContacto?.data} />
       <ScrollToTopButton />
     </Page>
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  const contenido = await getStrapiCollection("servicios-de-belleza");
-  const services = await getStrapiCollection("servicios");
+export const getStaticProps: GetStaticProps = async (PageContext) => {
+  const { locale } = PageContext;
+  const contenido = await getStrapiCollection("servicios-de-belleza", "*", locale);
+  const services = await getStrapiCollection("servicios", "*", locale);
+  const informacionDelContacto = await getStrapiCollection("informacion-del-contacto", "*", locale);
 
-  if (!contenido) {
+  if (!contenido || !informacionDelContacto || !services) {
     return {
       notFound: true,
     };
@@ -110,6 +110,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       services,
       contenido,
+      informacionDelContacto
     },
   };
 };

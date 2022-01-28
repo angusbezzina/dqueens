@@ -11,20 +11,21 @@ const Header = () => {
   const toggleActive = () => {
     const scrollDistance = 110;
     const scrolled = window.scrollY;
-    
+
     if (scrolled > scrollDistance) {
       setActive(true);
     } else {
       setActive(false);
     }
   };
-  
-  const { pathname: page } = useRouter();
-  const alternateTextColor = page !== '/';
+
+  const { pathname: page, locale } = useRouter();
+  const alternateTextColor = page !== "/";
+  const language = locale === "en" ? "en" : "es-MX";
 
   useEffect(() => {
     document.addEventListener("scroll", () => toggleActive());
-    return document.removeEventListener("scroll", () => toggleActive());
+    return () => document.removeEventListener("scroll", () => toggleActive());
   }, []);
 
   return (
@@ -35,12 +36,12 @@ const Header = () => {
           : `${alternateTextColor ? "text-white" : "text-primary"}`
       } fixed top-0 right-0 w-full h-20 p-2 md:py-2 md:px-10 flex justify-between align-center z-50`}
     >
-      <Link href="/">
+      <Link href="/" locale={language}>
         <a className="block" title="home">
           <Logo size="large" />
         </a>
       </Link>
-      <Nav />
+      <Nav headerActive={active} />
     </header>
   );
 };

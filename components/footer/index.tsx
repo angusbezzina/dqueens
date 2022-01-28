@@ -1,17 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faPhone,
-  faEnvelope,
-  faMapMarkerAlt,
-} from "@fortawesome/free-solid-svg-icons";
-import {
   faInstagram,
   faFacebook,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 
 import Logo from "components/logo";
-import Container from "components/container";
 
 interface FooterProps {
   socialDetails: any;
