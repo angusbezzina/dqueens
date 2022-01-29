@@ -9,7 +9,7 @@ async function getStrapiCollection(collection) {
   };
   try {
     const response = await fetch(
-      `https://dqueens.herokuapp.com/admin/api/${collection}`,
+      `https://dqueens.herokuapp.com/api/${collection}`,
       {
         method: "GET",
         headers,

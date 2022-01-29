@@ -27,10 +27,10 @@ const Home: NextPage = ({
   const {
     data: {
       attributes: {
-        Titulo: titulo,
-        Subtitulo: subtitulo,
-        Contenido: contenidoPrincipal,
-        FotoPrincipal: fotoPrincipal,
+        titulo: titulo,
+        subtitulo: subtitulo,
+        contenido: contenidoPrincipal,
+        fotoPrincipal: fotoPrincipal,
       },
     },
   } = contenido;

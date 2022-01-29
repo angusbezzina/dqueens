@@ -2,7 +2,7 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ["localhost"],
+    domains: ["localhost", "dqueens.herokuapp.com"],
   },
   i18n: {
     locales: ["en", "es-MX"],
