@@ -4,21 +4,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 Before you begin, you will need to make sure that you have npm installed on your machine (see [here](https://www.npmjs.com/))
 
-First, run the development server:
+First install the project depencies: `yarn install`
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Next, run the development server  `yarn dev`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see a local version of the website.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+You will need to have a local version of the backend of this project running concurrently or simply change the ``STRAPI_API_URL`` variable to point to [dqueens.herokuapp.com](https://dqueens.herokuapp.com/). I have sent you a file `.env.local` that you will need to add to the project locally in order for this to work too.
 
 ## Where can I change the data for the page (a note for Alexis)
 
@@ -34,6 +26,14 @@ The AR component is hosted elsewhere, but if you no longer want it there, go to 
 
 If anything is unclear, just email or message me.
 
+## Deployment
+
+To deploy this project, ensure the project builds locally (test with the command `yarn build`) and then simply push the changes via git to the `Main` branch of this repo. Vercel will handle the rest.
+
+#### Sitemap generation (a side note)
+
+Sitemaps are important for SEO purposes and you will need to generate a new version after the website has been updated with content. To do this locally, install node-fetch, then run the command `yarn postbuild`. This will add/update a sitemap.xml file to the repo that you can then push up to the website via the process mentioned above. This process can be automated, but I have not yet had time.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
@@ -42,9 +42,3 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

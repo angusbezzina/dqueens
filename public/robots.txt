@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://dqueens.com.mx/sitemap.xml
