@@ -1,10 +1,12 @@
-import { SitemapStream, streamToPromise } from "sitemap";
+const { SitemapStream, streamToPromise } = require("sitemap");
+
 import { getStrapiCollection } from "lib/strapi-api";
 
 export default async function (req: any, res: any) {
   try {
     const smStream = new SitemapStream({
       hostname: `https://${req.headers.host}`,
+      cacheTime: 600000,
     });
 
     // List of posts
