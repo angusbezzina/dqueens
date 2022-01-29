@@ -8,10 +8,13 @@ async function getStrapiCollection(collection) {
     "Content-Type": "application/json",
   };
   try {
-    const response = await fetch(`https://admin.dqueens.com.mx/api/${collection}`, {
-      method: "GET",
-      headers,
-    });
+    const response = await fetch(
+      `https://dqueens.herokuapp.com/admin/api/${collection}`,
+      {
+        method: "GET",
+        headers,
+      }
+    );
 
     if (response.statusCode === 403) {
       throw new Error("Strapi content not found, has it been created?");
