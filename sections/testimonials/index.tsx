@@ -13,27 +13,23 @@ const Testimonials = (testimonialData: any) => {
 
   const { testimonialList } = testimonialData;
 
+  console.log(testimonialList);
+
   const testimonialSlides = testimonialList.map(
     (testimonial: any, index: number) => {
       const {
         attributes: { titulo, comentario, foto },
       } = testimonial;
 
-      const {
-        data: {
-          attributes: { url: fotoUrl },
-        },
-      } = foto;
-
       return (
         <div
           key={index}
           className="flex flex-col p-5 items-center bg-primary text-white rounded-lg justify-center text-center shadow-md"
         >
-          {fotoUrl && (
+          {foto && (
             <Image
               className="object-cover object-center border-hidden rounded-full"
-              src={urlBuilder(fotoUrl)}
+              src={urlBuilder(foto.data?.attributes?.url)}
               alt={titulo}
               height={200}
               width={200}

@@ -7,5 +7,5 @@ module.exports = {
   i18n: {
     locales: ["en", "es-MX"],
     defaultLocale: "es-MX",
-  },
+  }
 };

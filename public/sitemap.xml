@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://dqueens.com.mx/blog</loc>
+    <lastmod>2022-01-29T00:30:21.160Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://dqueens.com.mx</loc>
+    <lastmod>2022-01-29T00:30:21.160Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://dqueens.com.mx/servicios</loc>
+    <lastmod>2022-01-29T00:30:21.160Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://dqueens.com.mx/servicios/maquillaje-social</loc>
+    <lastmod>2022-01-29T00:30:21.160Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc
+      >https://dqueens.com.mx/blog/feugiat-pellentesque-nostra-facilisi-ipsum</loc
+    >
+    <lastmod>2022-01-29T00:30:21.160Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

@@ -31,12 +31,15 @@ const Service: NextPage = ({
     return <div>Loading...</div>;
   }
 
+  console.log("service", service);
+
   const {
     attributes: {
       titulo,
       enlaceDeReserva,
       precio,
       contenido,
+      testimonios: { data: serviceTestimonios },
       fotoPrincipal: {
         data: {
           attributes: { url: fotoUrl },
@@ -44,6 +47,13 @@ const Service: NextPage = ({
       },
     },
   } = service;
+
+  const testimonialList =
+    !serviceTestimonios || serviceTestimonios.length < 1
+      ? testimonials?.data
+      : serviceTestimonios;
+
+  console.log("testimonials", testimonialList);
 
   return (
     <Page classNames="relative" socialDetails={informacionDelContacto?.data}>
@@ -85,7 +95,9 @@ const Service: NextPage = ({
           </a>
         </div>
       </Container>
-      <Testimonials testimonialList={testimonials?.data} />
+      <Testimonials
+        testimonialList={testimonialList}
+      />
       <Contact contactDetails={informacionDelContacto?.data} />
       <ScrollToTopButton />
     </Page>

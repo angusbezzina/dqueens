@@ -15,6 +15,7 @@ import Services from "sections/services";
 
 import { buttonLabels } from "lib/data/labels";
 import { formatMarkdown } from "lib/markdown";
+import { formatDate } from "lib/helpers";
 import { getStrapiCollection } from "lib/strapi-api";
 import Container from "components/container";
 
@@ -34,6 +35,7 @@ const Article: NextPage = ({
     attributes: {
       titulo,
       contenido,
+      createdAt,
       fotoPrincipal: {
         data: {
           attributes: { url: fotoUrl },
@@ -51,6 +53,7 @@ const Article: NextPage = ({
         title={titulo}
       />
       <Container classNames="px-2 py-10 md:p-10 border-bottom-gold">
+        <h4 className="text-secondary">{formatDate(createdAt)}</h4>
         <div
           className="markdown-styles"
           dangerouslySetInnerHTML={{

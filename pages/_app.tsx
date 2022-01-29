@@ -1,8 +1,17 @@
+import React, { useEffect } from "react";
 import type { AppProps } from "next/app";
+import TagManager from "react-gtm-module";
 
 import "styles/globals.scss";
 
+const tagManagerArgs = {
+  gtmId: "GTM-PM6WDP5",
+};
+
 function MyApp({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    TagManager.initialize(tagManagerArgs);
+  }, []);
   return <Component {...pageProps} />;
 }
 

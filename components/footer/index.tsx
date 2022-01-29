@@ -21,8 +21,10 @@ const Footer = ({ socialDetails }: FooterProps) => {
       <div className="absolute bottom-1 left-8">
         <Logo size="small" />
       </div>
-      <div className="absolute left-24 text-sm max-w-xxs hidden md:inline-block">{horario}</div>
-      <div className="">
+      <div className="absolute left-24 text-sm max-w-xxs hidden md:inline-block">
+        {horario}
+      </div>
+      <div className="grid grid-cols-3 gap-4 lg:gap-8">
         <a
           href={instagram}
           className="hover:text-secondary"
@@ -31,7 +33,7 @@ const Footer = ({ socialDetails }: FooterProps) => {
         >
           <FontAwesomeIcon
             icon={faInstagram}
-            className="inline-block h-4 w-12 mr-5"
+            className="inline-block text-lg md:text-2xl"
           />
         </a>
         <a
@@ -42,7 +44,7 @@ const Footer = ({ socialDetails }: FooterProps) => {
         >
           <FontAwesomeIcon
             icon={faFacebook}
-            className="inline-block h-4 w-12 mr-5"
+            className="inline-block text-lg md:text-2xl w-12"
           />
         </a>
         <a
@@ -53,7 +55,7 @@ const Footer = ({ socialDetails }: FooterProps) => {
         >
           <FontAwesomeIcon
             icon={faTwitter}
-            className="inline-block h-4 w-12 mr-5"
+            className="inline-block text-lg md:text-2xl w-12"
           />
         </a>
       </div>

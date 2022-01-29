@@ -21,7 +21,7 @@ const Hero = ({ title, isSinglePost, subtitle, photo, video, scrollButton }: Her
     return (
       <div className="relative h-108 md:h-screen w-full black-shade">
         <Container classNames="p-2 md:py-2 md:px-10 relative z-10 text-white">
-          <h1 className="mt-12 md:mt-0 feature-title">{title}</h1>
+          <h1 className="mt-12 mb-0 md:mt-0 feature-title">{title}</h1>
           <h5 className="feature-subtitle">{subtitle}</h5>
         </Container>
         <video
