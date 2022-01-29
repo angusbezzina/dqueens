@@ -44,6 +44,12 @@ async function generate() {
 
   pages = [...pages, ...serviceList, ...blogPostList];
 
+  const enPages = pages.map((page) =>
+    page === "pages/index.tsx" ? "/en/" : `/en${page}`
+  );
+
+  pages = [...pages, ...enPages];
+
   const sitemap = `
     <?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
