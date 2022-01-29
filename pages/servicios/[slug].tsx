@@ -31,8 +31,6 @@ const Service: NextPage = ({
     return <div>Loading...</div>;
   }
 
-  console.log("service", service);
-
   const {
     attributes: {
       titulo,
@@ -52,8 +50,6 @@ const Service: NextPage = ({
     !serviceTestimonios || serviceTestimonios.length < 1
       ? testimonials?.data
       : serviceTestimonios;
-
-  console.log("testimonials", testimonialList);
 
   return (
     <Page classNames="relative" socialDetails={informacionDelContacto?.data}>
@@ -95,9 +91,7 @@ const Service: NextPage = ({
           </a>
         </div>
       </Container>
-      <Testimonials
-        testimonialList={testimonialList}
-      />
+      <Testimonials testimonialList={testimonialList} />
       <Contact contactDetails={informacionDelContacto?.data} />
       <ScrollToTopButton />
     </Page>
@@ -156,8 +150,6 @@ export const getStaticProps: GetStaticProps = async (PageContext) => {
       notFound: true,
     };
   }
-
-  console.log("service object", service);
 
   return {
     props: {

@@ -13,8 +13,6 @@ const Testimonials = (testimonialData: any) => {
 
   const { testimonialList } = testimonialData;
 
-  console.log(testimonialList);
-
   const testimonialSlides = testimonialList.map(
     (testimonial: any, index: number) => {
       const {
