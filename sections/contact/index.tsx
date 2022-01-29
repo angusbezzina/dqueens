@@ -2,11 +2,15 @@ import AddressBar from "components/addressBar";
 import Container from "components/container";
 import GoogleMap from "components/googleMap";
 
-const Contact = () => {
+interface ContactProps {
+  contactDetails: any;
+}
+
+const Contact = ({ contactDetails }: ContactProps) => {
   return (
     <Container classNames="relative h-three-fifths-md z-0">
       <GoogleMap />
-      <AddressBar />
+      <AddressBar contactDetails={contactDetails} />
     </Container>
   );
 };

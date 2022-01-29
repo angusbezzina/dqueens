@@ -1,14 +1,18 @@
+import React, { useEffect } from "react";
 import type { AppProps } from "next/app";
-import { LanguageContextProvider } from "contexts/language";
+import TagManager from "react-gtm-module";
 
 import "styles/globals.scss";
 
+const tagManagerArgs = {
+  gtmId: "GTM-PM6WDP5",
+};
+
 function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <LanguageContextProvider>
-      <Component {...pageProps} />
-    </LanguageContextProvider>
-  );
+  useEffect(() => {
+    TagManager.initialize(tagManagerArgs);
+  }, []);
+  return <Component {...pageProps} />;
 }
 
 export default MyApp;

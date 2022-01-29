@@ -6,9 +6,10 @@ import Meta, { MetaProps } from "components/meta";
 interface PageProps extends MetaProps {
   children?: React.ReactNode;
   classNames?: string;
+  socialDetails: any;
 }
 
-const Page = ({ classNames, children, title, description, image, ...props }: PageProps) => {
+const Page = ({ classNames, children, title, description, image, socialDetails, ...props }: PageProps) => {
 
   return (
     <Container classNames={`min-h-screen relative pb-16 ${classNames}`}>
@@ -19,7 +20,7 @@ const Page = ({ classNames, children, title, description, image, ...props }: Pag
         { children }
       </main>
 
-      <Footer />
+      <Footer socialDetails={socialDetails} />
     </Container>
   );
 };

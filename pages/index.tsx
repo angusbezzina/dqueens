@@ -1,47 +1,73 @@
 import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
+import { useRouter } from "next/router";
 
 import Page from "components/page";
 import Hero from "components/hero";
 import ScrollToTopButton from "components/scrollToTopButton";
 
-import { useLanguage } from "contexts/language";
-
+import About from "sections/about";
 import Contact from "sections/contact";
 import Services from "sections/services";
-import OpenHours from "sections/openHours";
+import Testimonials from "sections/testimonials";
 
 import { getVideo } from "lib/pexels";
-import { heroTitles, buttonLabels } from "lib/data/labels";
-import { getStoredLanguage } from "lib/helpers/miscellaneous";
+import { buttonLabels } from "lib/data/labels";
+import { getStrapiCollection } from "lib/strapi-api";
 
 const Home: NextPage = ({
+  contenido,
+  informacionDelContacto,
+  servicios,
+  testimonials,
   video,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const languageState = useLanguage();
-  const language = languageState.state.language;
+  const { locale } = useRouter();
+  const language = locale === 'en' ? 'en' : 'es-MX';
 
-  getStoredLanguage();
+  const {
+    data: {
+      attributes: {
+        titulo: titulo,
+        subtitulo: subtitulo,
+        contenido: contenidoPrincipal,
+        fotoPrincipal: fotoPrincipal,
+      },
+    },
+  } = contenido;
+
+  const {
+    data: {
+      attributes: { url: fotoUrl },
+    },
+  } = fotoPrincipal;
 
   return (
-    <Page classNames="relative">
+    <Page classNames="relative" socialDetails={informacionDelContacto?.data}>
       <Hero
-        title="D'Queens"
-        subtitle={heroTitles.subtitle[language]}
+        title={titulo}
+        subtitle={subtitulo}
+        photo={fotoUrl}
         video={video?.video_files[0]?.link}
         scrollButton={buttonLabels.scrollDown[language]}
       />
-      <Services />
-      <OpenHours />
-      <Contact />
+      <About content={contenidoPrincipal} />
+      <Services serviceList={servicios?.data} />
+      <Testimonials testimonialList={testimonials?.data} />
+      <Contact contactDetails={informacionDelContacto?.data} />
       <ScrollToTopButton />
     </Page>
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async (PageContext) => {
+  const { locale } = PageContext;
+  const contenido = await getStrapiCollection("inicio", "*", locale);
+  const servicios = await getStrapiCollection("servicios", "*", locale);
+  const testimonials = await getStrapiCollection("testimonios", "*", locale);
   const video = await getVideo(5524244);
+  const informacionDelContacto = await getStrapiCollection("informacion-del-contacto","*", locale);
 
-  if (!video) {
+  if (!contenido || !servicios || !informacionDelContacto) {
     return {
       notFound: true,
     };
@@ -49,6 +75,10 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
+      contenido,
+      informacionDelContacto,
+      servicios,
+      testimonials,
       video,
     },
   };

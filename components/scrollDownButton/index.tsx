@@ -16,7 +16,7 @@ const ScrollDownButton = ({ text, classNames }: ScrollDownProps) => {
 
   return (
     <button
-      className={`text-white link-underline-animate flex hover:text-primary items-center ${classNames}`}
+      className={`text-white link-underline-animate flex items-center ${classNames}`}
       onClick={scrollIntoView}
       type="button"
     >

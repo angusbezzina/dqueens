@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHandPointUp } from "@fortawesome/free-solid-svg-icons";
-
-import { useLanguage } from "contexts/language";
 
 import { buttonLabels } from "lib/data/labels";
 
 const ScrollToTopButton = () => {
-  const languageState = useLanguage();
-  const language = languageState.state.language;
+  const { locale } = useRouter();
+  const language = locale === "en" ? "en" : "es-MX";
   const [visible, setVisible] = useState(false);
 
   const scrollToTop = () => {
@@ -17,24 +16,21 @@ const ScrollToTopButton = () => {
       behavior: "smooth",
     });
   };
-  
+
   const toggleVisible = () => {
     const pageHeight = window.innerHeight;
     const scrolled = window.scrollY;
-    
+
     if (scrolled > pageHeight) {
       setVisible(true);
     } else {
       setVisible(false);
     }
-  }
+  };
 
   useEffect(() => {
-
     document.addEventListener("scroll", () => toggleVisible());
-    return document.removeEventListener("scroll", () =>
-      toggleVisible()
-    );
+    return () => document.removeEventListener("scroll", () => toggleVisible());
   }, []);
 
   return (
