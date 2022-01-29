@@ -1,2 +1,6 @@
 User-agent: *
-Sitemap: https://dqueens.com.mx/sitemap.xml
+Sitemap: https://dqueens.com.mx/api/posts-sitemap
+
+Allow: /*
+
+Disallow: /api/*
