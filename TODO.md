@@ -1,8 +1,7 @@
 ## TODO List:
 
-1. Meta tags
-2. Image storage solution (images being wiped) - maybe S3
-3. Type issue
-4. README.md and share with Alexis
+1. Video URL pulling through
+2. Update meta descriptions
+3. Make Loom videos and example Setmore account
 
 Deadline is tomorrow (4/6/2022).

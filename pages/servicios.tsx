@@ -12,7 +12,6 @@ import About from "sections/about";
 import Contact from "sections/contact";
 
 import { buttonLabels, sectionTitles } from "lib/data/labels";
-import { urlBuilder } from "lib/helpers";
 import { getStrapiCollection } from "lib/strapi-api";
 import Container from "components/container";
 
@@ -31,6 +30,7 @@ const Services: NextPage = ({
         subtitulo: subtitulo,
         contenido: contenidoPrincipal,
         fotoPrincipal: fotoPrincipal,
+        videoURL,
       },
     },
   } = contenido;
@@ -64,7 +64,7 @@ const Services: NextPage = ({
                 alt={titulo}
                 className="block border-hidden rounded-full object-cover oject-center"
                 height={300}
-                src={urlBuilder(serviceFotoUrl)}
+                src={serviceFotoUrl}
                 width={300}
               />
             )}
@@ -90,6 +90,7 @@ const Services: NextPage = ({
         title={titulo}
         subtitle={subtitulo}
         photo={fotoUrl}
+        video={videoURL}
         scrollButton={buttonLabels.scrollDown[language]}
       />
       <About content={contenidoPrincipal} />

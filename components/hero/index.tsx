@@ -3,7 +3,6 @@ import Image from "next/image";
 import Container from "components/container";
 
 import ScrollDownButton from "components/scrollDownButton";
-import { urlBuilder } from "lib/helpers";
 
 interface HeroProps {
   title: string;
@@ -15,7 +14,7 @@ interface HeroProps {
 }
 
 const Hero = ({ title, isSinglePost, subtitle, photo, video, scrollButton }: HeroProps) => {
-  const photoUrl = photo ? urlBuilder(photo) : "";
+  const photoUrl = photo ? photo : "";
 
   if (video) {
     return (

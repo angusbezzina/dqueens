@@ -6,7 +6,6 @@ import Container from "components/container";
 import Carousel from "components/carousel";
 
 import { sectionTitles } from "lib/data/labels";
-import { urlBuilder } from "lib/helpers";
 
 const Services = (serviceData: any) => {
   const { locale } = useRouter();
@@ -33,7 +32,7 @@ const Services = (serviceData: any) => {
               alt={titulo}
               className="block border-hidden rounded-full object-cover oject-center"
               height={300}
-              src={urlBuilder(fotoUrl)}
+              src={fotoUrl}
               width={300}
             />
           )}

@@ -31,6 +31,7 @@ const Home: NextPage = ({
         subtitulo: subtitulo,
         contenido: contenidoPrincipal,
         fotoPrincipal: fotoPrincipal,
+        videoUrl,
       },
     },
   } = contenido;
@@ -40,6 +41,8 @@ const Home: NextPage = ({
       attributes: { url: fotoUrl },
     },
   } = fotoPrincipal;
+
+  const heroVideo = videoUrl ? videoUrl : video?.video_files[0]?.link;
 
   return (
     <Page
@@ -53,7 +56,7 @@ const Home: NextPage = ({
         title={titulo}
         subtitle={subtitulo}
         photo={fotoUrl}
-        video={video?.video_files[0]?.link}
+        video={heroVideo}
         scrollButton={buttonLabels.scrollDown[language]}
       />
       <About content={contenidoPrincipal} />

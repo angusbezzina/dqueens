@@ -11,7 +11,6 @@ import About from "sections/about";
 import Contact from "sections/contact";
 
 import { buttonLabels, sectionTitles } from "lib/data/labels";
-import { urlBuilder } from "lib/helpers";
 import { getStrapiCollection } from "lib/strapi-api";
 import Container from "components/container";
 
@@ -83,7 +82,7 @@ const Blog: NextPage = ({
                     {fotoUrl && (
                       <Image
                         className="rounded-lg"
-                        src={urlBuilder(fotoUrl)}
+                        src={fotoUrl}
                         alt={titulo}
                         layout="fill"
                       />

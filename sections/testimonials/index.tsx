@@ -5,7 +5,6 @@ import Container from "components/container";
 import Carousel from "components/carousel";
 
 import { sectionTitles } from "lib/data/labels";
-import { urlBuilder } from "lib/helpers";
 
 const Testimonials = (testimonialData: any) => {
   const { locale } = useRouter();
@@ -27,7 +26,7 @@ const Testimonials = (testimonialData: any) => {
           {foto && (
             <Image
               className="object-cover object-center border-hidden rounded-full"
-              src={urlBuilder(foto.data?.attributes?.url)}
+              src={foto.data?.attributes?.url}
               alt={titulo}
               height={200}
               width={200}

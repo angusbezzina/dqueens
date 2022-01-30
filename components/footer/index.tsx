@@ -18,7 +18,7 @@ const Footer = ({ socialDetails }: FooterProps) => {
 
   return (
     <footer className="absolute bottom-0 left-0 w-full h-16 p-2 flex items-center justify-center bg-tertiary bg-opacity-90 text-white">
-      <div className="absolute bottom-1 left-8">
+      <div className="absolute bottom-1 left-2 md:left-10">
         <Logo size="small" />
       </div>
       <div className="absolute left-24 text-sm max-w-xxs hidden md:inline-block">

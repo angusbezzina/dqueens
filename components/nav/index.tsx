@@ -99,7 +99,7 @@ const Nav = ({ headerActive }: NavProps) => {
               </Link>
             </li>
           </ul>
-          <div className="absolute top-4 left-8 bg-white rounded">
+          <div className="absolute top-4 left-2 bg-white rounded">
             <SpanishLanguageButton />
             <EnglishLanguageButton />
           </div>

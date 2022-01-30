@@ -1,9 +1,3 @@
-import { STRAPI_API_URL } from "./constants";
-
-export const urlBuilder = (urlPartial: string) => {
-  return urlPartial;
-};
-
 export const formatDate = (dateString: string) => {
   const date = new Date(dateString);
   const dd = String(date.getDate()).padStart(2, "0");

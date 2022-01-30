@@ -1,8 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-import { urlBuilder } from "lib/helpers";
-
 export interface MetaProps {
   title?: string;
   description?: string;
@@ -28,7 +26,7 @@ const Meta = ({ title, description, image }: MetaProps) => {
 
       <meta property="og:title" content={title} />
       <meta property="og:type" content="article" />
-      {image && <meta property="og:image" content={urlBuilder(image)} />}
+      {image && <meta property="og:image" content={image} />}
       <meta property="og:url" content={`https://www.dqueens.com.mx${asPath}`} />
       <meta name="twitter:card" content="summary_large_image" />
 
