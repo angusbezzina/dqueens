@@ -52,7 +52,13 @@ const Service: NextPage = ({
       : serviceTestimonios;
 
   return (
-    <Page classNames="relative" socialDetails={informacionDelContacto?.data}>
+    <Page
+      classNames="relative"
+      title={titulo}
+      image={fotoUrl}
+      description={contenido.substring(0, 100)}
+      socialDetails={informacionDelContacto?.data}
+    >
       <Hero
         isSinglePost
         photo={fotoUrl}

@@ -1,8 +1,8 @@
 ## TODO List:
 
-1. Add real data
-2. Set up external AI site
-3. Final checks: SEO
+1. Meta tags
+2. Image storage solution (images being wiped) - maybe S3
+3. Type issue
 4. README.md and share with Alexis
 
 Deadline is tomorrow (4/6/2022).

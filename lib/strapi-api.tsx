@@ -20,9 +20,9 @@ export const getStrapiCollection = async (
     {
       encodeValuesOnly: true,
     }
-  );
+    );
 
-  try {
+    try {
     const response: any = await fetch(
       `${STRAPI_API_URL}/api/${collection}?${query}`,
       {
@@ -40,6 +40,8 @@ export const getStrapiCollection = async (
     console.error(error);
   }
 };
+
+
 
 export const getStrapiUpload = async (collection: string) => {
   try {

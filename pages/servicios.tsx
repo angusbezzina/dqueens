@@ -79,7 +79,13 @@ const Services: NextPage = ({
     });
 
   return (
-    <Page classNames="relative" socialDetails={informacionDelContacto?.data}>
+    <Page
+      classNames="relative"
+      title={titulo}
+      image={fotoUrl}
+      description={contenidoPrincipal.substring(0, 100)}
+      socialDetails={informacionDelContacto?.data}
+    >
       <Hero
         title={titulo}
         subtitle={subtitulo}

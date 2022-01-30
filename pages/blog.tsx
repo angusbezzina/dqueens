@@ -41,7 +41,13 @@ const Blog: NextPage = ({
   } = fotoPrincipal;
 
   return (
-    <Page classNames="relative" socialDetails={informacionDelContacto?.data}>
+    <Page
+      classNames="relative"
+      title={titulo}
+      image={fotoUrl}
+      description={contenidoPrincipal.substring(0, 100)}
+      socialDetails={informacionDelContacto?.data}
+    >
       <Hero
         title={titulo}
         subtitle={subtitulo}
@@ -69,16 +75,19 @@ const Blog: NextPage = ({
                 },
               },
             } = articulo;
+
             return (
               <Link key={index} href={`/blog/${slug}`}>
                 <a className="p-5 block flex flex-col justify-center items-center hover-text-white rounded-lg text-white md:text-primary bg-primary md:bg-white md:hover:bg-primary md:hover:text-white md:shadow-none md:hover:shadow-md">
                   <div className="relative block h-48 w-full mb-5">
-                    <Image
-                      className="rounded-lg"
-                      src={urlBuilder(fotoUrl)}
-                      alt={titulo}
-                      layout="fill"
-                    />
+                    {fotoUrl && (
+                      <Image
+                        className="rounded-lg"
+                        src={urlBuilder(fotoUrl)}
+                        alt={titulo}
+                        layout="fill"
+                      />
+                    )}
                   </div>
                   <div>
                     <h6 className="text-white md:text-primary">{titulo}</h6>

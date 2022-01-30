@@ -45,7 +45,13 @@ const Article: NextPage = ({
   } = article;
 
   return (
-    <Page classNames="relative" socialDetails={informacionDelContacto?.data}>
+    <Page
+      classNames="relative"
+      title={titulo}
+      image={fotoUrl}
+      description={contenido.substring(0, 100)}
+      socialDetails={informacionDelContacto?.data}
+    >
       <Hero
         isSinglePost
         photo={fotoUrl}
@@ -112,6 +118,10 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
 
   if (Array.isArray(article?.data) && article?.data.length === 1) {
     article = article?.data[0];
+  } else if (Array.isArray(article?.data) && article?.data.length > 1) {
+    article = article?.data.find(
+      (article: any) => article.attributes.locale === locale
+    );
   } else {
     throw new Error("Unexpected number of posts received");
   }

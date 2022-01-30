@@ -1,12 +1,16 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
+
+import { urlBuilder } from "lib/helpers";
 
 export interface MetaProps {
   title?: string;
   description?: string;
-  image?: string; 
+  image?: string;
 }
 
 const Meta = ({ title, description, image }: MetaProps) => {
+  const { asPath } = useRouter();
 
   return (
     <Head>
@@ -20,7 +24,16 @@ const Meta = ({ title, description, image }: MetaProps) => {
       <meta
         name="keywords"
         content="Belleza, Salon de Belleza, Queretaro, Beauty, Beauty Salon"
-      ></meta>
+      />
+
+      <meta property="og:title" content={title} />
+      <meta property="og:type" content="article" />
+      {image && <meta property="og:image" content={urlBuilder(image)} />}
+      <meta property="og:url" content={`https://www.dqueens.com.mx${asPath}`} />
+      <meta name="twitter:card" content="summary_large_image" />
+
+      <meta property="og:description" content={description} />
+      <meta property="og:site_name" content="D'Queens Salon de Belleza" />
     </Head>
   );
 };
