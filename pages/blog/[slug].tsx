@@ -120,7 +120,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
     article = article?.data[0];
   } else if (Array.isArray(article?.data) && article?.data.length > 1) {
     article = article?.data.find(
-      (article: any) => article.attributes.locale === locale
+      (article: any) => article.attributes.slug === slug
     );
   } else {
     throw new Error("Unexpected number of posts received");
