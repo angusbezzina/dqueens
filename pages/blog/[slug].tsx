@@ -9,7 +9,6 @@ import { useRouter } from "next/router";
 
 import Page from "components/page";
 import Hero from "components/hero";
-import ScrollToTopButton from "components/scrollToTopButton";
 
 import Services from "sections/services";
 
@@ -68,7 +67,6 @@ const Article: NextPage = ({
         />
       </Container>
       <Services serviceList={services?.data} />
-      <ScrollToTopButton />
     </Page>
   );
 };
@@ -138,6 +136,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
       informacionDelContacto,
       services,
     },
+    revalidate: 1,
   };
 };
 

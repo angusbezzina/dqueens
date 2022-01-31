@@ -21,7 +21,7 @@ const Testimonials = (testimonialData: any) => {
       return (
         <div
           key={index}
-          className="flex flex-col p-5 items-center bg-primary text-white rounded-lg justify-center text-center shadow-md"
+          className="flex flex-col p-5 items-center bg-primary text-white rounded-lg justify-center text-center shadow-lg"
         >
           {foto && (
             <Image

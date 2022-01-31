@@ -3,10 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import Carousel from "components/carousel";
 import Hero from "components/hero";
 import Page from "components/page";
-import ScrollToTopButton from "components/scrollToTopButton";
 
 import About from "sections/about";
 import Contact from "sections/contact";
@@ -30,7 +28,7 @@ const Services: NextPage = ({
         subtitulo: subtitulo,
         contenido: contenidoPrincipal,
         fotoPrincipal: fotoPrincipal,
-        videoURL,
+        videoPrincipal,
       },
     },
   } = contenido;
@@ -40,6 +38,12 @@ const Services: NextPage = ({
       attributes: { url: fotoUrl },
     },
   } = fotoPrincipal;
+
+  const {
+    data: {
+      attributes: { url: videoURL },
+    },
+  } = videoPrincipal;
 
   const serviceSlides = services?.data
     .sort((a: any, b: any) =>
@@ -58,7 +62,7 @@ const Services: NextPage = ({
 
       return (
         <Link href={`/servicios/${slug}`} key={index}>
-          <a className="flex flex-col m-2 p-5 items-center rounded-lg justify-center shadow-none hover-text-white hover:bg-primary hover:text-white hover:shadow-md">
+          <a className="flex flex-col m-2 p-5 items-center rounded-lg justify-center shadow-none hover-text-white hover:bg-primary hover:text-white hover:shadow-lg">
             {serviceFotoUrl && (
               <Image
                 alt={titulo}
@@ -98,7 +102,6 @@ const Services: NextPage = ({
         {serviceSlides}
       </Container>
       <Contact contactDetails={informacionDelContacto?.data} />
-      <ScrollToTopButton />
     </Page>
   );
 };
@@ -129,6 +132,7 @@ export const getStaticProps: GetStaticProps = async (PageContext) => {
       contenido,
       informacionDelContacto,
     },
+    revalidate: 1,
   };
 };
 

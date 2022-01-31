@@ -8,7 +8,7 @@ interface ContainerProps {
 const Container = ({ classNames, children }: ContainerProps) => {
 
   return (
-    <div className={`w-full h-full flex flex-col align-center justify-center ${ classNames }`}>
+    <div className={`w-full h-full max-w-7xl mx-auto flex flex-col justify-center ${ classNames }`}>
       { children }
     </div>
   );

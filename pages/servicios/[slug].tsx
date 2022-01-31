@@ -9,7 +9,6 @@ import { useRouter } from "next/router";
 
 import Page from "components/page";
 import Hero from "components/hero";
-import ScrollToTopButton from "components/scrollToTopButton";
 
 import Testimonials from "sections/testimonials";
 import Contact from "sections/contact";
@@ -67,8 +66,6 @@ const Service: NextPage = ({
       />
       <a
         href={enlaceDeReserva}
-        target="_blank"
-        rel="noreferrer"
         className="block w-full p-5 bg-secondary text-white text-center hover:bg-primary"
       >
         <h6 className="text-white mb-0 pb-0">
@@ -85,12 +82,7 @@ const Service: NextPage = ({
         <div className="flex flex-col items-start">
           <h3 className="mt-8 normal-case">{sectionTitles.prices[language]}</h3>
           <p>{precio}</p>
-          <a
-            href={enlaceDeReserva}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-block self-center mt-10"
-          >
+          <a href={enlaceDeReserva} className="inline-block self-center mt-10">
             <h6 className="mb-0 p-5 rounded-lg bg-primary text-white hover:bg-secondary">
               {buttonLabels.bookNow[language]}
             </h6>
@@ -99,7 +91,6 @@ const Service: NextPage = ({
       </Container>
       <Testimonials testimonialList={testimonialList} />
       <Contact contactDetails={informacionDelContacto?.data} />
-      <ScrollToTopButton />
     </Page>
   );
 };
@@ -163,6 +154,7 @@ export const getStaticProps: GetStaticProps = async (PageContext) => {
       service,
       testimonials,
     },
+    revalidate: 1,
   };
 };
 

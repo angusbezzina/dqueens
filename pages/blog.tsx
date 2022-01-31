@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 
 import Page from "components/page";
 import Hero from "components/hero";
-import ScrollToTopButton from "components/scrollToTopButton";
 
 import About from "sections/about";
 import Contact from "sections/contact";
@@ -77,7 +76,7 @@ const Blog: NextPage = ({
 
             return (
               <Link key={index} href={`/blog/${slug}`}>
-                <a className="p-5 block flex flex-col justify-center items-center hover-text-white rounded-lg text-white md:text-primary bg-primary md:bg-white md:hover:bg-primary md:hover:text-white md:shadow-none md:hover:shadow-md">
+                <a className="p-5 block flex flex-col justify-center items-center hover-text-white rounded-lg text-white md:text-primary bg-primary md:bg-white md:hover:bg-primary md:hover:text-white md:shadow-none md:hover:shadow-lg">
                   <div className="relative block h-48 w-full mb-5">
                     {fotoUrl && (
                       <Image
@@ -100,7 +99,6 @@ const Blog: NextPage = ({
           })}
       </Container>
       <Contact contactDetails={informacionDelContacto?.data} />
-      <ScrollToTopButton />
     </Page>
   );
 };
@@ -127,6 +125,7 @@ export const getStaticProps: GetStaticProps = async (PageContext) => {
       contenido,
       informacionDelContacto,
     },
+    revalidate: 1,
   };
 };
 

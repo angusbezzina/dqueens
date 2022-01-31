@@ -151,6 +151,15 @@ textarea {
 .scroll-up {
   font-family: "Cinzel", serif;
   mix-blend-mode: exclusion;
+  right: 0.5rem;
+
+  @media screen and (min-width: 768px) {
+    right: 1.25rem;
+  }
+
+  @media screen and (min-width: 1280px) {
+    right: calc(50vw - 640px);
+  }
 }
 
 .hide {
@@ -380,6 +389,10 @@ textarea {
   }
 }
 
+.width-offset {
+  width: calc(50vw - 600px);
+}
+
 .mejor-opcion {
   position: relative;
   text-align: left;
@@ -474,5 +487,70 @@ textarea {
     &:first-child {
       margin-top: 0;
     }
+  }
+
+  u {
+    text-decoration-color: var(--secondaryColor);
+  }
+
+  a {
+    cursor: pointer;
+    color: var(--secondaryColor);
+    text-decoration-color: var(--secondaryColor);
+
+    &:hover {
+      color: var(--primaryColor);
+      text-decoration-color: var(--primaryColor);
+    }
+  }
+
+  ul {
+    margin: 2rem 0;
+
+    li {
+      position: relative;
+      padding-left: 2rem;
+
+      &::before {
+        position: absolute;
+        left: 0;
+        top: calc(50% - 0.25rem);
+        height: 0.5rem;
+        width: 0.5rem;
+        min-width: 0.5rem;
+        content: "";
+        background-color: var(--secondaryColor);
+        border-radius: 100%;
+      }
+    }
+  }
+
+  ol {
+    counter-reset: dqueens-counter;
+    margin: 2rem 0;
+
+    li {
+      position: relative;
+      padding-left: 2rem;
+      counter-increment: dqueens-counter;
+
+      &::before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-family: "Cinzel", serif;
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: var(--secondaryColor);
+        content: counter(dqueens-counter) ".";
+      }
+    }
+  }
+
+  img {
+    margin: 2rem 0;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
   }
 }

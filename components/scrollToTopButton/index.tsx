@@ -37,7 +37,7 @@ const ScrollToTopButton = () => {
     <button
       className={`${
         visible ? "flex flex-row" : "hide"
-      } fixed bottom-4 md:bottom-5 right-2 md:right-5 text-secondary scroll-up items-center z-40`}
+      } fixed bottom-4 md:bottom-5 text-secondary scroll-up items-center z-40`}
       onClick={scrollToTop}
       type="button"
     >

@@ -34,14 +34,16 @@ const Header = () => {
         active
           ? "bg-white shadow-lg text-primary"
           : `${alternateTextColor ? "text-white" : "text-primary"}`
-      } fixed top-0 right-0 w-full h-20 p-2 md:py-2 md:px-10 flex justify-between align-center z-50`}
+      } fixed top-0 right-0 w-full h-20 z-50`}
     >
-      <Link href="/" locale={language}>
-        <a className="block" title="home">
-          <Logo size="large" />
-        </a>
-      </Link>
-      <Nav headerActive={active} />
+      <div className="relative w-full h-full max-w-7xl p-2 md:py-2 md:px-10 mx-auto flex justify-between align-center">
+        <Link href="/" locale={language}>
+          <a className="block" title="home">
+            <Logo size="large" />
+          </a>
+        </Link>
+        <Nav headerActive={active} />
+      </div>
     </header>
   );
 };

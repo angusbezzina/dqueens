@@ -26,7 +26,7 @@ const Services = (serviceData: any) => {
 
     return (
       <Link href={`/servicios/${slug}`} key={index}>
-        <a className="flex flex-col m-4 p-5 items-center rounded-lg justify-center shadow-none hover-text-white hover:bg-primary hover:shadow-md">
+        <a className="flex flex-col m-4 p-5 items-center rounded-lg justify-center shadow-none hover-text-white hover:bg-primary hover:shadow-lg">
           {fotoUrl && (
             <Image
               alt={titulo}

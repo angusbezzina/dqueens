@@ -8,7 +8,7 @@ interface ContactProps {
 
 const Contact = ({ contactDetails }: ContactProps) => {
   return (
-    <Container classNames="relative h-three-fifths-md z-0">
+    <Container classNames="relative h-three-fifths-md z-0 max-w-none">
       <GoogleMap />
       <AddressBar contactDetails={contactDetails} />
     </Container>

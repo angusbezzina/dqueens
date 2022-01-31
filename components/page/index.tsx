@@ -12,7 +12,7 @@ interface PageProps extends MetaProps {
 const Page = ({ classNames, children, title, description, image, socialDetails, ...props }: PageProps) => {
 
   return (
-    <Container classNames={`min-h-screen relative pb-16 ${classNames}`}>
+    <Container classNames={`min-h-screen relative pb-16 max-w-none ${classNames}`}>
       <Meta title={title} description={description} image={image} />
       <Header />
 
