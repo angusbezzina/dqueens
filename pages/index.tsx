@@ -27,23 +27,25 @@ const Home: NextPage = ({
         titulo: titulo,
         subtitulo: subtitulo,
         contenido: contenidoPrincipal,
-        fotoPrincipal: fotoPrincipal,
-        videoPrincipal,
+        mediaPrincipal,
       },
     },
   } = contenido;
 
   const {
     data: {
-      attributes: { url: fotoUrl },
+      attributes: { url: mediaUrl, mime },
     },
-  } = fotoPrincipal;
+  } = mediaPrincipal;
 
-  const {
-    data: {
-      attributes: { url: videoUrl },
-    },
-  } = videoPrincipal;
+  let videoUrl = undefined;
+  let fotoUrl = undefined;
+
+  if (mime.includes("video")) {
+    videoUrl = mediaUrl;
+  } else {
+    fotoUrl = mediaUrl;
+  }
 
   return (
     <Page

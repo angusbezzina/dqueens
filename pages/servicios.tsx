@@ -27,23 +27,25 @@ const Services: NextPage = ({
         titulo: titulo,
         subtitulo: subtitulo,
         contenido: contenidoPrincipal,
-        fotoPrincipal: fotoPrincipal,
-        videoPrincipal,
+        mediaPrincipal
       },
     },
   } = contenido;
 
   const {
     data: {
-      attributes: { url: fotoUrl },
+      attributes: { url: mediaUrl, mime },
     },
-  } = fotoPrincipal;
+  } = mediaPrincipal;
 
-  const {
-    data: {
-      attributes: { url: videoURL },
-    },
-  } = videoPrincipal;
+  let videoUrl = undefined;
+  let fotoUrl = undefined;
+
+  if (mime.includes("video")) {
+    videoUrl = mediaUrl;
+  } else {
+    fotoUrl = mediaUrl;
+  }
 
   const serviceSlides = services?.data
     .sort((a: any, b: any) =>
@@ -94,7 +96,7 @@ const Services: NextPage = ({
         title={titulo}
         subtitle={subtitulo}
         photo={fotoUrl}
-        video={videoURL}
+        video={videoUrl}
         scrollButton={buttonLabels.scrollDown[language]}
       />
       <About content={contenidoPrincipal} />
