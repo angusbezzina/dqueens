@@ -41,7 +41,7 @@ const Services: NextPage = ({
   let videoUrl = undefined;
   let fotoUrl = undefined;
 
-  if (mime.includes("video")) {
+  if (mime && mime.indexOf("video") >= 0) {
     videoUrl = mediaUrl;
   } else {
     fotoUrl = mediaUrl;
