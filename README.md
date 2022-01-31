@@ -30,10 +30,6 @@ If anything is unclear, just email or message me.
 
 To deploy this project, ensure the project builds locally (test with the command `yarn build`) and then simply push the changes via git to the `Main` branch of this repo. Vercel will handle the rest.
 
-#### Sitemap generation (a side note)
-
-Sitemaps are important for SEO purposes and you will need to generate a new version after the website has been updated with content. To do this locally, install node-fetch, then run the command `yarn postbuild`. This will add/update a sitemap.xml file to the repo that you can then push up to the website via the process mentioned above. This process can be automated, but I have not yet had time.
-
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
