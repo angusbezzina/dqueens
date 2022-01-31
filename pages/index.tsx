@@ -44,7 +44,7 @@ const Home: NextPage = ({
       attributes: { url: videoUrl },
     },
   } = videoPrincipal;
-  
+
   return (
     <Page
       classNames="relative"
