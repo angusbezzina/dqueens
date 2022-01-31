@@ -87,7 +87,7 @@ const Blog: NextPage = ({
                       />
                     )}
                   </div>
-                  <div>
+                  <div className="w-full">
                     <h6 className="text-white md:text-primary">{titulo}</h6>
                     <span className="text-left link-underline">
                       {buttonLabels.readMore[language]}
