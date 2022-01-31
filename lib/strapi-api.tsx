@@ -14,13 +14,15 @@ export const getStrapiCollection = async (
   const query = qs.stringify(
     {
       populate,
-      locale,
+      "_locale": locale,
       slug,
     },
     {
       encodeValuesOnly: true,
     }
     );
+
+    console.log(`${STRAPI_API_URL}/api/${collection}?${query}`);
 
     try {
     const response: any = await fetch(
