@@ -22,8 +22,6 @@ export const getStrapiCollection = async (
     }
     );
 
-    console.log(`${STRAPI_API_URL}/api/${collection}?${query}`);
-
     try {
     const response: any = await fetch(
       `${STRAPI_API_URL}/api/${collection}?${query}`,
