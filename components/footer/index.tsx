@@ -26,7 +26,7 @@ const Footer = ({ socialDetails }: FooterProps) => {
         <div className="absolute left-24 text-sm max-w-xxs hidden md:inline-block">
           {horario}
         </div>
-        <div className="grid grid-cols-3 gap-4 lg:gap-8">
+        <div className="grid grid-cols-2 gap-4 lg:gap-8">
           <a
             href={instagram}
             className="hover:text-secondary"
@@ -49,17 +49,19 @@ const Footer = ({ socialDetails }: FooterProps) => {
               className="inline-block text-lg md:text-2xl w-12"
             />
           </a>
-          <a
-            href={twitter}
-            className="hover:text-secondary"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FontAwesomeIcon
-              icon={faTwitter}
-              className="inline-block text-lg md:text-2xl w-12"
-            />
-          </a>
+          {/* {twitter && (
+            <a
+              href={twitter}
+              className="hover:text-secondary"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FontAwesomeIcon
+                icon={faTwitter}
+                className="inline-block text-lg md:text-2xl w-12"
+              />
+            </a>
+          )} */}
         </div>
         <ScrollToTopButton />
       </div>
