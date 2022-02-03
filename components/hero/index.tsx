@@ -5,6 +5,7 @@ import Container from "components/container";
 import ScrollDownButton from "components/scrollDownButton";
 
 interface HeroProps {
+  isHome?: boolean;
   title: string;
   subtitle?: string;
   video?: string;
@@ -14,6 +15,7 @@ interface HeroProps {
 }
 
 const Hero = ({
+  isHome,
   title,
   isSinglePost,
   subtitle,
@@ -23,23 +25,35 @@ const Hero = ({
 }: HeroProps) => {
   const photoUrl = photo ? photo : "";
 
-  if (video) {
+  if (video || isHome) {
     return (
-      <div className="relative h-108 md:h-screen w-full black-shade">
+      <div className="relative h-108 md:h-screen w-full black-shade--full">
         <Container classNames="p-2 md:py-2 md:px-10 max-w-none relative z-10 text-white">
           <h1 className="mt-12 mb-0 md:mt-0 feature-title">{title}</h1>
           <h5 className="feature-subtitle">{subtitle}</h5>
         </Container>
-        <video
-          className="absolute top-0 left-0 w-full h-full object-cover object-center z-0"
-          autoPlay
-          loop
-          muted
-          playsInline
-        >
-          <source src={video} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        {video ? (
+          <video
+            className="absolute top-0 left-0 w-full h-full object-cover object-center z-0"
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source src={video} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        ) : (
+          <div className="absolute top-0 left-0 w-full h-full object-cover object-center z-0">
+            <Image
+              className="object-cover"
+              alt={title}
+              src={photoUrl}
+              layout="fill"
+            />
+          </div>
+        )}
+
         {scrollButton && (
           <ScrollDownButton
             text={scrollButton}

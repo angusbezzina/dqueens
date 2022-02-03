@@ -18,8 +18,9 @@ const Home: NextPage = ({
   servicios,
   testimonials,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { locale } = useRouter();
+  const { asPath, locale } = useRouter();
   const language = locale === "en" ? "en" : "es-MX";
+  const isHome = asPath === '/';
 
   const {
     data: {
@@ -56,6 +57,7 @@ const Home: NextPage = ({
       socialDetails={informacionDelContacto?.data}
     >
       <Hero
+        isHome={isHome}
         title={titulo}
         subtitle={subtitulo}
         photo={fotoUrl}
