@@ -14,7 +14,7 @@ export const getStrapiCollection = async (
   const query = qs.stringify(
     {
       populate,
-      "_locale": locale,
+      locale,
       slug,
     },
     {
