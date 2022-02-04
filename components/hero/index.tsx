@@ -27,14 +27,14 @@ const Hero = ({
 
   if (video || isHome) {
     return (
-      <div className="relative h-108 md:h-screen w-full black-shade--full">
+      <div className="relative h-108 md:h-screen w-full black-shade--full hero-shade">
         <Container classNames="p-2 md:py-2 md:px-10 max-w-none relative z-10 text-white">
           <h1 className="mt-12 mb-0 md:mt-0 feature-title">{title}</h1>
           <h5 className="feature-subtitle">{subtitle}</h5>
         </Container>
         {video ? (
           <video
-            className="absolute top-0 left-0 w-full h-full object-cover object-center z-0"
+            className="absolute top-0 left-0 w-full h-full object-cover object-center rounded-br-special z-0"
             autoPlay
             loop
             muted
@@ -46,7 +46,7 @@ const Hero = ({
         ) : (
           <div className="absolute top-0 left-0 w-full h-full object-cover object-center z-0">
             <Image
-              className="object-cover"
+              className="object-cover rounded-br-special"
               alt={title}
               src={photoUrl}
               layout="fill"
@@ -57,7 +57,7 @@ const Hero = ({
         {scrollButton && (
           <ScrollDownButton
             text={scrollButton}
-            classNames="absolute scroll-down right-5 md:right-10 bottom-5 z-10"
+            classNames="absolute scroll-down right-2 md:right-10 bottom-5 z-10 md:text-primary"
           />
         )}
       </div>
