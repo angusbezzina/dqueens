@@ -6,7 +6,7 @@ interface EnglishLanguageButtonProps {
 }
 
 const EnglishLanguageButton = ({ localizedPageUrl }: EnglishLanguageButtonProps) => {
-  const { locale, push } = useRouter();
+  const { asPath, locale, push } = useRouter();
   const isActive = locale === "en";
 
   return (
@@ -17,6 +17,8 @@ const EnglishLanguageButton = ({ localizedPageUrl }: EnglishLanguageButtonProps)
       onClick={() => {
         if (localizedPageUrl) {
           push(localizedPageUrl, localizedPageUrl, { locale: "en" });
+        } else {
+          push(asPath, asPath, { locale: "en" });
         }
       }}
       title="English"

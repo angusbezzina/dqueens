@@ -115,14 +115,14 @@ const Nav = ({ headerActive, localizedPageUrl }: NavProps) => {
         <li>
           <Link href="/servicios" locale={language}>
             <a className="ml-2 mr-5 link-underline" title="Reservar Cita">
-              Servicios de Belleza
+              {navItems.services[language]}
             </a>
           </Link>
         </li>
         <li>
           <Link href="/blog" locale={language}>
             <a className="ml-2 mr-5 link-underline" title="Reservar Cita">
-              Blog
+              {navItems.blog[language]}
             </a>
           </Link>
         </li>

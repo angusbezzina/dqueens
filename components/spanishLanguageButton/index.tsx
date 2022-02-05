@@ -6,7 +6,7 @@ interface SpanishLanguageButtonProps {
 }
 
 const SpanishLanguageButton = ({ localizedPageUrl }: SpanishLanguageButtonProps) => {
-  const { locale, push } = useRouter();
+  const { asPath, locale, push } = useRouter();
   const isActive = locale === "es-MX";
 
   return (
@@ -19,6 +19,8 @@ const SpanishLanguageButton = ({ localizedPageUrl }: SpanishLanguageButtonProps)
       onClick={() => {
         if (localizedPageUrl) {
           push(localizedPageUrl, localizedPageUrl, { locale: "es-MX" });
+        } else {
+          push(asPath, asPath, { locale: "es-MX" });
         }
       }}
       title="Espanol"
