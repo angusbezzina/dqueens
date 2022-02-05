@@ -11,9 +11,10 @@ import { navItems } from "lib/data/labels";
 
 interface NavProps {
   headerActive: boolean;
+  localizedPageUrl?: string;
 }
 
-const Nav = ({ headerActive }: NavProps) => {
+const Nav = ({ headerActive, localizedPageUrl }: NavProps) => {
   const { locale } = useRouter();
   const language = locale === "en" ? "en" : "es-MX";
   const [isMobile, setIsMobile] = useState(false);
@@ -100,8 +101,8 @@ const Nav = ({ headerActive }: NavProps) => {
             </li>
           </ul>
           <div className="absolute top-4 left-2 bg-white rounded">
-            <SpanishLanguageButton />
-            <EnglishLanguageButton />
+            <SpanishLanguageButton localizedPageUrl={localizedPageUrl} />
+            <EnglishLanguageButton localizedPageUrl={localizedPageUrl} />
           </div>
         </div>
       </nav>
@@ -127,8 +128,8 @@ const Nav = ({ headerActive }: NavProps) => {
         </li>
       </ul>
       <div className="bg-white rounded">
-        <SpanishLanguageButton />
-        <EnglishLanguageButton />
+        <SpanishLanguageButton localizedPageUrl={localizedPageUrl} />
+        <EnglishLanguageButton localizedPageUrl={localizedPageUrl} />
       </div>
     </nav>
   );

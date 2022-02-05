@@ -6,7 +6,11 @@ import { useRouter } from "next/router";
 import Logo from "components/logo";
 import Nav from "components/nav";
 
-const Header = () => {
+interface HeaderProps {
+  localizedPageUrl?: string;
+}
+
+const Header = ({ localizedPageUrl }: HeaderProps) => {
   const [active, setActive] = useState(false);
   const toggleActive = () => {
     const scrollDistance = 110;
@@ -42,7 +46,7 @@ const Header = () => {
             <Logo size="large" />
           </a>
         </Link>
-        <Nav headerActive={active} />
+        <Nav headerActive={active} localizedPageUrl={localizedPageUrl} />
       </div>
     </header>
   );

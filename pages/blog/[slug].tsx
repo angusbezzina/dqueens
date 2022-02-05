@@ -20,6 +20,7 @@ import Container from "components/container";
 
 const Article: NextPage = ({
   article,
+  localizedArticle,
   informacionDelContacto,
   services,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -50,6 +51,7 @@ const Article: NextPage = ({
       image={fotoUrl}
       description={contenido.substring(0, 100)}
       socialDetails={informacionDelContacto?.data}
+      localizedPageUrl={`/blog/${localizedArticle}`}
     >
       <Hero
         isSinglePost
@@ -97,7 +99,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 
   return {
     paths,
-    fallback: 'blocking',
+    fallback: "blocking",
   };
 };
 
@@ -130,9 +132,22 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
     };
   }
 
+  const {
+    attributes: {
+      localizations: { data: localizationData },
+    },
+  } = article;
+
+  const localizedArticle = localizationData.find((article: any) =>
+    locale === "en"
+      ? article.attributes.locale === "es-MX"
+      : article.attributes.locale === "en"
+  ).attributes.slug;
+
   return {
     props: {
       article,
+      localizedArticle,
       informacionDelContacto,
       services,
     },

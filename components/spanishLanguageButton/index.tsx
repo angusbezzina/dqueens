@@ -1,8 +1,12 @@
 import React from "react";
 import { useRouter } from "next/router";
 
-const SpanishLanguageButton = () => {
-  const { locale, asPath, push } = useRouter();
+interface SpanishLanguageButtonProps {
+  localizedPageUrl?: string;
+}
+
+const SpanishLanguageButton = ({ localizedPageUrl }: SpanishLanguageButtonProps) => {
+  const { locale, push } = useRouter();
   const isActive = locale === "es-MX";
 
   return (
@@ -13,7 +17,9 @@ const SpanishLanguageButton = () => {
           : "bg-white"
       } px-3 py-2 rounded-tl rounded-bl`}
       onClick={() => {
-        push(asPath, asPath, { locale: "es-MX" });
+        if (localizedPageUrl) {
+          push(localizedPageUrl, localizedPageUrl, { locale: "es-MX" });
+        }
       }}
       title="Espanol"
     >
