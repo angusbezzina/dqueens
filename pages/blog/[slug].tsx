@@ -7,16 +7,16 @@ import {
 import slugify from "slugify";
 import { useRouter } from "next/router";
 
-import Page from "components/page";
+import Container from "components/container";
 import Hero from "components/hero";
+import Page from "components/page";
 
 import Services from "sections/services";
 
 import { buttonLabels } from "lib/data/labels";
 import { formatMarkdown } from "lib/markdown";
-import { formatDate } from "lib/helpers";
+import { formatDate, formatMetaDescription } from "lib/helpers";
 import { getStrapiCollection } from "lib/strapi-api";
-import Container from "components/container";
 
 const Article: NextPage = ({
   article,
@@ -49,7 +49,7 @@ const Article: NextPage = ({
       classNames="relative"
       title={titulo}
       image={fotoUrl}
-      description={contenido.substring(0, 100)}
+      description={contenido ? formatMetaDescription(contenido) : titulo}
       socialDetails={informacionDelContacto?.data}
       localizedPageUrl={`/blog/${localizedArticle}`}
     >

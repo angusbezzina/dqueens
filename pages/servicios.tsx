@@ -3,15 +3,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
+import Container from "components/container";
 import Hero from "components/hero";
 import Page from "components/page";
 
 import About from "sections/about";
 import Contact from "sections/contact";
 
-import { buttonLabels, sectionTitles } from "lib/data/labels";
+import { buttonLabels } from "lib/data/labels";
 import { getStrapiCollection } from "lib/strapi-api";
-import Container from "components/container";
+import { formatMetaDescription } from "lib/helpers";
 
 const Services: NextPage = ({
   contenido,
@@ -90,7 +91,7 @@ const Services: NextPage = ({
       classNames="relative"
       title={titulo}
       image={fotoUrl}
-      description={contenidoPrincipal.substring(0, 100)}
+      description={contenidoPrincipal ? formatMetaDescription(contenidoPrincipal) : titulo}
       socialDetails={informacionDelContacto?.data}
     >
       <Hero

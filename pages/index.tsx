@@ -11,6 +11,7 @@ import Testimonials from "sections/testimonials";
 
 import { buttonLabels } from "lib/data/labels";
 import { getStrapiCollection } from "lib/strapi-api";
+import { formatMetaDescription } from "lib/helpers";
 
 const Home: NextPage = ({
   contenido,
@@ -53,7 +54,7 @@ const Home: NextPage = ({
       classNames="relative"
       title={titulo}
       image={fotoUrl}
-      description={contenidoPrincipal.substring(0, 100)}
+      description={contenidoPrincipal ? formatMetaDescription(contenidoPrincipal) : titulo}
       socialDetails={informacionDelContacto?.data}
     >
       <Hero

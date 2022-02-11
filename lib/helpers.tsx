@@ -6,3 +6,8 @@ export const formatDate = (dateString: string) => {
 
   return `${dd}/${mm}/${yyyy}`;
 };
+
+export const formatMetaDescription = (markdownText: string) => {
+  const regEx = /^(?!#) *((?:\S+( |$)+){1,20})/gm;
+  return markdownText.match(regEx);
+};

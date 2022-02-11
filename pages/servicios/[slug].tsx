@@ -7,6 +7,7 @@ import {
 import slugify from "slugify";
 import { useRouter } from "next/router";
 
+import Container from "components/container";
 import Page from "components/page";
 import Hero from "components/hero";
 
@@ -16,7 +17,7 @@ import Contact from "sections/contact";
 import { buttonLabels, sectionTitles } from "lib/data/labels";
 import { formatMarkdown } from "lib/markdown";
 import { getStrapiCollection } from "lib/strapi-api";
-import Container from "components/container";
+import { formatMetaDescription } from "lib/helpers";
 
 const Service: NextPage = ({
   informacionDelContacto,
@@ -56,7 +57,7 @@ const Service: NextPage = ({
       classNames="relative"
       title={titulo}
       image={fotoUrl}
-      description={contenido.substring(0, 100)}
+      description={contenido ? formatMetaDescription(contenido) : titulo}
       socialDetails={informacionDelContacto?.data}
       localizedPageUrl={`/servicios/${localizedService}`}
     >
