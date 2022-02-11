@@ -30,8 +30,9 @@ const Services = (serviceData: any) => {
           {fotoUrl && (
             <Image
               alt={titulo}
-              className="block border-hidden rounded-full object-cover oject-center"
+              className="block border-hidden rounded-full object-cover object-center"
               height={300}
+              priority={true}
               src={fotoUrl}
               width={300}
             />

@@ -29,6 +29,7 @@ const Testimonials = (testimonialData: any) => {
               src={foto.data?.attributes?.url}
               alt={titulo}
               height={200}
+              priority={true}
               width={200}
             />
           )}

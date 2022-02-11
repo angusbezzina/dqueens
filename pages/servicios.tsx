@@ -70,6 +70,7 @@ const Services: NextPage = ({
                 alt={titulo}
                 className="block border-hidden rounded-full object-cover oject-center"
                 height={300}
+                priority={true}
                 src={serviceFotoUrl}
                 width={300}
               />

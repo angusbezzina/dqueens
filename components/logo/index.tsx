@@ -13,6 +13,7 @@ const Logo = ({ size, className }: LogoProps) => {
       alt="D'Queens Logo Header"
       layout="fixed"
       height="64"
+      priority={true}
       width="64"
     />
   ) : (
@@ -22,6 +23,7 @@ const Logo = ({ size, className }: LogoProps) => {
       alt="D'Queens Logo Footer"
       layout="fixed"
       height="40"
+      priority={true}
       width="40"
     />
   );

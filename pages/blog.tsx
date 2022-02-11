@@ -53,8 +53,8 @@ const Blog: NextPage = ({
         scrollButton={buttonLabels.scrollDown[language]}
       />
       <About content={contenidoPrincipal} />
-      <Container classNames="grid grid-cols-1 gap-2 md:grid-cols-3 px-2 py-10 md:p-10">
-        <h2 className="text-center md:col-span-3">
+      <Container classNames="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 px-2 py-10 md:p-10">
+        <h2 className="text-center md:col-span-2 lg:col-span-3">
           {sectionTitles.articles[language]}
         </h2>
         {articulos?.data
@@ -76,20 +76,21 @@ const Blog: NextPage = ({
 
             return (
               <Link key={index} href={`/blog/${slug}`}>
-                <a className="p-5 block flex flex-col justify-center items-center hover-text-white rounded-lg text-white md:text-primary bg-primary md:bg-white md:hover:bg-primary md:hover:text-white md:shadow-none md:hover:shadow-lg">
+                <a className="p-5 block flex flex-col justify-start items-center hover-text-white rounded-lg text-white md:text-primary bg-primary md:bg-white md:hover:bg-primary md:hover:text-white md:shadow-none md:hover:shadow-lg">
                   <div className="relative block h-48 w-full mb-5">
                     {fotoUrl && (
                       <Image
-                        className="rounded-lg"
+                        className="object-cover rounded-lg"
                         src={fotoUrl}
                         alt={titulo}
                         layout="fill"
+                        priority={true}
                       />
                     )}
                   </div>
                   <div className="w-full">
                     <h6 className="text-white md:text-primary">{titulo}</h6>
-                    <span className="text-left link-underline">
+                    <span className="absolute left-0 bottom-0 link-underline">
                       {buttonLabels.readMore[language]}
                     </span>
                   </div>

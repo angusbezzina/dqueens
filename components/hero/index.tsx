@@ -27,8 +27,8 @@ const Hero = ({
 
   if (video || isHome) {
     return (
-      <div className="relative h-108 md:h-screen w-full black-shade--full hero-shade">
-        <Container classNames="p-2 md:py-2 md:px-10 max-w-none relative z-10 text-white">
+      <div className="relative h-108 md:h-screen w-full white-shade--full hero-shade">
+        <Container classNames="p-2 md:py-2 md:px-10 md:container max-w-none relative z-10 text-white">
           <h1 className="mt-12 mb-0 md:mt-0 feature-title">{title}</h1>
           <h5 className="feature-subtitle">{subtitle}</h5>
         </Container>
@@ -50,6 +50,7 @@ const Hero = ({
               alt={title}
               src={photoUrl}
               layout="fill"
+              priority={true}
             />
           </div>
         )}
@@ -70,7 +71,7 @@ const Hero = ({
       <div className="relative flex items-center h-108 max-h-screen max-w-7xl mx-auto black-shade w-full z-10">
         <Container classNames="relative z-10 p-2 md:py-2 md:w-1/2 md:px-10 text-white max-w-none mx-0">
           <h1
-            className={`feature-title-photo text-white md:text-primary mt-12 md:mt-0 ${
+            className={`feature-title-photo text-white md:text-primary mt-12 md:mt-0 md:mr-5 ${
               isSinglePost ? "single-post-title" : ""
             }`}
           >
@@ -85,6 +86,7 @@ const Hero = ({
             alt={title}
             src={photoUrl}
             layout="fill"
+            priority={true}
           />
         </div>
         {scrollButton && (
