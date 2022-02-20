@@ -2,10 +2,12 @@ import React, { useEffect } from "react";
 import type { AppProps } from "next/app";
 import TagManager from "react-gtm-module";
 
+import { gtmManager } from "lib/constants";
+
 import "styles/globals.scss";
 
 const tagManagerArgs = {
-  gtmId: "GTM-PM6WDP5",
+  gtmId: gtmManager,
 };
 
 function MyApp({ Component, pageProps }: AppProps) {

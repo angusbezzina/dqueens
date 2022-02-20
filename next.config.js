@@ -12,4 +12,11 @@ module.exports = {
     locales: ["en", "es-MX"],
     defaultLocale: "es-MX",
   },
+  experimental: {
+    modern: true,
+    async rewrites() {
+      return [{ source: "/sitemap.xml", destination: "/api/posts-sitemap" }];
+    },
+    catchAllRouting: true,
+  },
 };

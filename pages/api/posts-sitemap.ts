@@ -1,8 +1,13 @@
 const { SitemapStream, streamToPromise } = require("sitemap");
+import { IncomingMessage, ServerResponse } from "http";
 
 import { getStrapiCollection } from "lib/strapi-api";
 
-export default async function handler(req: any, res: any) {
+export default async function createSitemap(
+  req: IncomingMessage,
+  res: ServerResponse
+) {
+  res.setHeader("Content-Type", "text/xml");
   try {
     const smStream = new SitemapStream({
       hostname: `https://${req.headers.host}`,
@@ -28,29 +33,24 @@ export default async function handler(req: any, res: any) {
     posts = ["/", "/en/", ...posts, ...enPosts];
 
     // Create each URL row
-    posts.forEach((post: string) => {
+    for (const post of posts) {
       smStream.write({
         url: post,
         changefreq: "daily",
         priority: 0.9,
       });
-    });
+    }
 
     // End sitemap stream
     smStream.end();
 
     // XML sitemap string
     const sitemapOutput = (await streamToPromise(smStream)).toString();
-
-    // Change headers
-    res.writeHead(200, {
-      "Content-Type": "application/xml",
-    });
-
-    // Display output to user
-    res.end(sitemapOutput);
+    res.write(sitemapOutput);
+    res.end();
   } catch (e) {
     console.log(e);
-    res.send(JSON.stringify(e));
+    res.statusCode = 500;
+    res.end();
   }
 }
