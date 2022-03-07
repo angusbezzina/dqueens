@@ -141,6 +141,10 @@ export const getStaticProps: GetStaticProps = async (PageContext) => {
 
   if (Array.isArray(service?.data) && service?.data.length === 1) {
     service = service?.data[0];
+  } else if (Array.isArray(service?.data) && service?.data.length > 1) {
+    service = service?.data.find(
+      (service: any) => service.attributes.slug === slug
+    );
   } else {
     throw new Error("Unexpected number of posts received");
   }
@@ -157,10 +161,10 @@ export const getStaticProps: GetStaticProps = async (PageContext) => {
     },
   } = service;
 
-  const localizedService = localizationData.find((article: any) =>
+  const localizedService = localizationData.find((service: any) =>
     locale === "en"
-      ? article.attributes.locale === "es-MX"
-      : article.attributes.locale === "en"
+      ? service.attributes.locale === "es-MX"
+      : service.attributes.locale === "en"
   ).attributes.slug;
 
   return {

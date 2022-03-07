@@ -19,10 +19,7 @@ const Testimonials = (testimonialData: any) => {
       } = testimonial;
 
       return (
-        <div
-          key={index}
-          className="flex flex-col p-5 items-center bg-primary text-white rounded-lg justify-center text-center shadow-lg"
-        >
+        <div key={index} className="flex flex-col h-full p-5 items-center rounded-lg justify-center shadow-none text-white bg-primary hover:shadow-lg">
           {foto && (
             <Image
               className="object-cover object-center border-hidden rounded-full"
@@ -43,7 +40,7 @@ const Testimonials = (testimonialData: any) => {
   );
 
   return (
-    <Container classNames="px-2 py-10 md:p-10 border-bottom-gold">
+    <Container classNames="px-2 py-10 md:p-10">
       <h3 className="text-center">{sectionTitles.testimonials[language]}</h3>
       {testimonialList && <Carousel slides={testimonialSlides} />}
     </Container>

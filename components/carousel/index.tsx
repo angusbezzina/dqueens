@@ -28,6 +28,7 @@ const Carousel = ({ slides }: CarouselProps) => {
         trimSpace: false,
         speed: 400,
         padding: "0.5rem",
+        gap: "1rem",
         classes: {
           arrows: "splide__arrows carousel-arrows",
           arrow: "splide__arrow carousel-arrow",
