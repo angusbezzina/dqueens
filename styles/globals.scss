@@ -150,7 +150,6 @@ textarea {
 
 .scroll-up {
   font-family: "Cinzel", serif;
-  mix-blend-mode: exclusion;
   right: 0.5rem;
 
   @media screen and (min-width: 768px) {
@@ -160,6 +159,10 @@ textarea {
   @media screen and (min-width: 1280px) {
     right: calc(50vw - 640px);
   }
+}
+
+.chameleonText {
+  mix-blend-mode: exclusion;
 }
 
 .hide {
