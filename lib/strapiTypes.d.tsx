@@ -1,4 +1,4 @@
-export type ResourceType = {
+export type ArticleType = {
   id: number;
   title: string;
   link: string | null;
@@ -14,10 +14,10 @@ export type CategoryType = {
   published_at: Date;
   created_at: Date;
   updated_at: Date;
-  resources: ResourceType[] | [];
+  resources: ArticleType[] | [];
 };
 
-export type SpanishClassType = {
+export type ServiceType = {
   animation: string;
   blurb: string;
   created_at: Date;
