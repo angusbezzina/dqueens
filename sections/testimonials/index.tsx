@@ -19,7 +19,7 @@ const Testimonials = (testimonialData: any) => {
       } = testimonial;
 
       return (
-        <div key={index} className="flex flex-col h-full p-5 items-center rounded-lg justify-center shadow-none text-white bg-primary hover:shadow-lg">
+        <div key={index} className="flex flex-col h-full p-5 items-center rounded-lg justify-center shadow-none text-white bg-primary hover hover:shadow-lg">
           {foto && (
             <Image
               className="object-cover object-center border-hidden rounded-full"

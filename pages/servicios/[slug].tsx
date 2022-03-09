@@ -69,7 +69,7 @@ const Service: NextPage = ({
       />
       <a
         href={enlaceDeReserva}
-        className="block w-full p-5 bg-secondary text-white text-center hover:bg-primary"
+        className="block w-full p-5 bg-secondary text-white text-center hover hover:bg-primary"
       >
         <h6 className="text-white mb-0 pb-0">
           {buttonLabels.bookNow[language]}
@@ -86,7 +86,7 @@ const Service: NextPage = ({
           <h3 className="mt-8 normal-case">{sectionTitles.prices[language]}</h3>
           <p>{precio}</p>
           <a href={enlaceDeReserva} className="inline-block self-center mt-10">
-            <h6 className="mb-0 p-5 rounded-lg bg-primary text-white hover:bg-secondary">
+            <h6 className="mb-0 p-5 rounded-lg bg-primary text-white hover hover:bg-secondary">
               {buttonLabels.bookNow[language]}
             </h6>
           </a>

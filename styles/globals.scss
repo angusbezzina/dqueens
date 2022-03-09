@@ -161,6 +161,14 @@ textarea {
   }
 }
 
+.hover {
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transition: all 0.3s ease-in-out;
+  }
+}
+
 .chameleonText {
   mix-blend-mode: exclusion;
 }
@@ -356,6 +364,10 @@ textarea {
   transition: transform 0.3s ease-in-out;
 }
 
+.link-underline--absolute {
+  position: absolute;
+}
+
 .link-hover-animated {
   transform: translateY(0);
   animation: hover infinite 1.5s;
@@ -478,7 +490,7 @@ textarea {
 }
 
 .max-w-xxs {
-  max-width: 220px;
+  max-width: 170px;
 }
 
 // Splide carousel styles
@@ -579,7 +591,8 @@ textarea {
   }
 
   img {
-    margin: 2rem 0;
+    margin: 2rem auto;
+    max-height: 80vh;
     border-radius: 0.5rem;
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
       0 4px 6px -4px rgb(0 0 0 / 0.1);

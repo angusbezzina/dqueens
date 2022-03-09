@@ -92,7 +92,7 @@ const Hero = ({
         {scrollButton && (
           <ScrollDownButton
             text={scrollButton}
-            classNames="absolute scroll-down right-5 md:right-10 bottom-5 z-10 hover:text-white"
+            classNames="absolute scroll-down right-5 md:right-10 bottom-5 z-10 hover hover:text-white"
           />
         )}
       </div>

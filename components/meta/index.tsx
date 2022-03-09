@@ -28,10 +28,17 @@ const Meta = ({ title, description, image }: MetaProps) => {
       <meta property="og:type" content="article" />
       {image && <meta property="og:image" content={image} />}
       <meta property="og:url" content={`https://www.dqueens.com.mx${asPath}`} />
-      <meta name="twitter:card" content="summary_large_image" />
-
       <meta property="og:description" content={description} />
       <meta property="og:site_name" content="D'Queens Salon de Belleza" />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta
+        name="twitter:url"
+        content={`https://www.dqueens.com.mx${asPath}`}
+      />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      {image && <meta name="twitter:image" content={image} />}
     </Head>
   );
 };

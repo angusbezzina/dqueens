@@ -34,21 +34,24 @@ const AddressBar = ({ contactDetails }: AddressBarProps ) => {
       <address className="grid grid-cols-1 gap-5 bg-white">
         <a
           href={`tel:+${numeroDeTelefono.replace(/ /g, "")}`}
-          className="flex items-center hover:text-primary"
+          className="flex items-center hover hover:ease-in hover:duration-300 hover:text-primary"
         >
           <FontAwesomeIcon icon={faPhone} className="h-4 w-12 mr-5" />+
           {numeroDeTelefono}
         </a>
         <a
           href={`mailto:${correoElectronico}`}
-          className="flex items-center hover:text-primary"
+          className="flex items-center hover hover:text-primary"
         >
           <FontAwesomeIcon icon={faEnvelope} className="h-4 w-12 mr-5" />
           {correoElectronico}
         </a>
         <a
-          href={`https://api.whatsapp.com/send?phone=${numeroDeWhatsApp.replace(/ /g, "")}`}
-          className="flex items-center hover:text-primary"
+          href={`https://api.whatsapp.com/send?phone=${numeroDeWhatsApp.replace(
+            / /g,
+            ""
+          )}`}
+          className="flex items-center hover hover:text-primary"
         >
           <FontAwesomeIcon icon={faWhatsapp} className="h-4 w-12 mr-5" />
           WhatsApp
@@ -57,7 +60,7 @@ const AddressBar = ({ contactDetails }: AddressBarProps ) => {
           href={enlaceDeDireccion}
           target="_blank"
           rel="noreferrer"
-          className="flex items-center hover:text-primary"
+          className="flex items-center hover hover:text-primary"
         >
           <FontAwesomeIcon icon={faMapMarkerAlt} className="h-4 w-12 mr-5" />
           <p className="inline-block max-w-sm">{formatMarkdown(direccion)}</p>

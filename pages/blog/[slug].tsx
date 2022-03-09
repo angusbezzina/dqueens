@@ -13,10 +13,12 @@ import Page from "components/page";
 
 import Services from "sections/services";
 
-import { buttonLabels } from "lib/data/labels";
+import { buttonLabels, sectionTitles } from "lib/data/labels";
 import { formatMarkdown } from "lib/markdown";
 import { formatDate, formatMetaDescription } from "lib/helpers";
 import { getStrapiCollection } from "lib/strapi-api";
+import { faFacebook, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Article: NextPage = ({
   article,
@@ -24,7 +26,7 @@ const Article: NextPage = ({
   informacionDelContacto,
   services,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { locale, isFallback } = useRouter();
+  const { locale, isFallback, asPath } = useRouter();
   const language = locale === "en" ? "en" : "es-MX";
 
   if (isFallback) {
@@ -59,15 +61,58 @@ const Article: NextPage = ({
         scrollButton={buttonLabels.scrollDown[language]}
         title={titulo}
       />
-      <Container classNames="px-2 py-10 md:p-10 border-bottom-gold">
-        <h4 className="text-secondary">{formatDate(createdAt)}</h4>
-        <div
-          className="markdown-styles"
-          dangerouslySetInnerHTML={{
-            __html: contenido ? formatMarkdown(contenido) : "",
-          }}
-        />
-      </Container>
+      <div className="md:bg-secondary md:bg-opacity-80 md:py-10">
+        <Container classNames="px-2 py-10 md:rounded-lg md:bg-white md:p-10 border-bottom-gold">
+          <h4 className="text-secondary">{formatDate(createdAt)}</h4>
+          <div
+            className="markdown-styles"
+            dangerouslySetInnerHTML={{
+              __html: contenido ? formatMarkdown(contenido) : "",
+            }}
+          />
+          <div className="text-center mt-10">
+            <h6 className="text-secondary">{sectionTitles.share[language]}:</h6>
+            <ul className="flex justify-center items-center text-primary">
+              <li>
+                <a
+                  className="hover hover:text-secondary"
+                  href={`https://www.facebook.com/sharer.php?u=https://dqueens.com.mx${asPath}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FontAwesomeIcon
+                    icon={faFacebook}
+                    className="text-2xl mx-5"
+                  />
+                </a>
+              </li>
+              <li>
+                <a
+                  className="hover hover:text-secondary"
+                  href={`https://twitter.com/intent/tweet?url=https://dqueens.com.mx${asPath}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FontAwesomeIcon icon={faTwitter} className="text-2xl mx-5" />
+                </a>
+              </li>
+              <li>
+                <a
+                  className="hover hover:text-secondary"
+                  href={`https://www.linkedin.com/sharing/share-offsite/?url=https://dqueens.com.mx${asPath}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FontAwesomeIcon
+                    icon={faLinkedin}
+                    className="text-2xl mx-5"
+                  />
+                </a>
+              </li>
+            </ul>
+          </div>
+        </Container>
+      </div>
       <Services serviceList={services?.data} />
     </Page>
   );

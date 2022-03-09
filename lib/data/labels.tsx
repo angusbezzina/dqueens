@@ -38,6 +38,14 @@ export const sectionTitles = {
     "en": "Price",
     "es-MX": "Precio",
   },
+  share: {
+    "en": "Share",
+    "es-MX": "Compartir",
+  },
+  categories: {
+    "en": "Categories",
+    "es-MX": "Categorias",
+  },
 };
 
 export const heroTitles = {

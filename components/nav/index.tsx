@@ -52,14 +52,14 @@ const Nav = ({ headerActive, localizedPageUrl }: NavProps) => {
           {isMobileNavActive ? (
             <FontAwesomeIcon
               icon={faTimes}
-              className={`burger-menu text-white text-2xl hover:text-secondary`}
+              className={`burger-menu text-white text-2xl hover hover:text-secondary`}
             />
           ) : (
             <FontAwesomeIcon
               icon={faBars}
               className={`burger-menu ${
                 headerActive ? "text-primary" : "text-white"
-              }  text-2xl hover:text-secondary`}
+              }  text-2xl hover hover:text-secondary`}
             />
           )}
         </button>

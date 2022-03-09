@@ -77,7 +77,7 @@ const Blog: NextPage = ({
 
             return (
               <Link key={index} href={`/blog/${slug}`}>
-                <a className="p-5 block flex flex-col justify-start items-center hover-text-white rounded-lg text-white md:text-primary bg-primary md:bg-white md:hover:bg-primary md:hover:text-white md:shadow-none md:hover:shadow-lg">
+                <a className="p-5 block flex flex-col justify-start items-center hover-text-white rounded-lg text-white md:text-primary bg-primary md:bg-white hover md:hover:bg-primary md:hover:text-white md:shadow-none md:hover:shadow-lg">
                   <div className="relative block h-48 w-full mb-5">
                     {fotoUrl && (
                       <Image
