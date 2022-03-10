@@ -19,7 +19,12 @@ const Testimonials = (testimonialData: any) => {
       } = testimonial;
 
       return (
-        <div key={index} className="flex flex-col h-full p-5 items-center rounded-lg justify-center shadow-none text-white bg-primary hover hover:shadow-lg">
+        <div
+          key={index}
+          className={`flex flex-col h-full p-5 items-center rounded-lg justify-start shadow-none text-white ${
+            foto ? "bg-primary" : "border border-secondary"
+          } hover hover:shadow-lg`}
+        >
           {foto && (
             <Image
               className="object-cover object-center border-hidden rounded-full"
@@ -30,10 +35,16 @@ const Testimonials = (testimonialData: any) => {
               width={200}
             />
           )}
-          <h6 className="mt-5 text-white underline underline-offset-8 decoration-secondary">
+          <h6
+            className={`mt-5 ${
+              foto ? "text-white" : "text-primary"
+            } underline underline-offset-8 decoration-secondary`}
+          >
             {titulo}
           </h6>
-          <div>{comentario}</div>
+          <div className={`text-center ${foto ? "text-white" : "text-black"}`}>
+            {comentario}
+          </div>
         </div>
       );
     }

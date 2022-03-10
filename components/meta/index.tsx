@@ -8,7 +8,10 @@ export interface MetaProps {
 }
 
 const Meta = ({ title, description, image }: MetaProps) => {
-  const { asPath } = useRouter();
+  const { locale, asPath } = useRouter();
+  const pageUrl = `https://www.dqueens.com.mx${
+    locale === "en" ? "/en" : ""
+  }${asPath}`;
 
   return (
     <Head>
@@ -27,14 +30,17 @@ const Meta = ({ title, description, image }: MetaProps) => {
       <meta property="og:title" content={title} />
       <meta property="og:type" content="article" />
       {image && <meta property="og:image" content={image} />}
-      <meta property="og:url" content={`https://www.dqueens.com.mx${asPath}`} />
+      <meta
+        property="og:url"
+        content={pageUrl}
+      />
       <meta property="og:description" content={description} />
       <meta property="og:site_name" content="D'Queens Salon de Belleza" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta
         name="twitter:url"
-        content={`https://www.dqueens.com.mx${asPath}`}
+        content={pageUrl}
       />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />

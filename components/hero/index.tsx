@@ -1,8 +1,11 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 import Container from "components/container";
 
 import ScrollDownButton from "components/scrollDownButton";
+import Link from "next/link";
+import { buttonLabels } from "lib/data/labels";
 
 interface HeroProps {
   isHome?: boolean;
@@ -11,7 +14,7 @@ interface HeroProps {
   video?: string;
   photo?: string;
   scrollButton?: string;
-  isSinglePost?: boolean;
+  isSinglePost?: "servicio" | "articulo";
 }
 
 const Hero = ({
@@ -24,6 +27,8 @@ const Hero = ({
   scrollButton,
 }: HeroProps) => {
   const photoUrl = photo ? photo : "";
+  const { locale } = useRouter();
+  const language = locale === "en" ? "en" : "es-MX";
 
   if (video || isHome) {
     return (
@@ -89,6 +94,20 @@ const Hero = ({
             priority={true}
           />
         </div>
+        {isSinglePost === "servicio" && (
+          <Link href="/servicios" locale={language}>
+            <a className="absolute back-button left-5 md:left-10 bottom-5 z-10 text-white md:text-primary hover">
+              {buttonLabels.backToServices[language]}
+            </a>
+          </Link>
+        )}
+        {isSinglePost === "articulo" && (
+          <Link href="/blog" locale={language}>
+            <a className="absolute back-button left-5 md:left-10 bottom-5 z-10 text-white md:text-primary hover">
+              {buttonLabels.backToBlog[language]}
+            </a>
+          </Link>
+        )}
         {scrollButton && (
           <ScrollDownButton
             text={scrollButton}

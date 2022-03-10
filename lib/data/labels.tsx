@@ -1,75 +1,83 @@
 export const navItems = {
   services: {
-    "en": "Beauty Services",
+    en: "Beauty Services",
     "es-MX": "Servicios de Belleza",
   },
   reservation: {
-    "en": "Book Now",
+    en: "Book Now",
     "es-MX": "Reservar Cita",
   },
   blog: {
-    "en": "Blog",
+    en: "Blog",
     "es-MX": "Blog",
-  }
-}
+  },
+};
 
 export const sectionTitles = {
   services: {
-    "en": "Services",
+    en: "Services",
     "es-MX": "Servicios",
   },
   openHours: {
-    "en": "Hours",
+    en: "Hours",
     "es-MX": "Horas",
   },
   contact: {
-    "en": "Get In Touch!",
+    en: "Get In Touch!",
     "es-MX": "Contacta con nosotros!",
   },
   testimonials: {
-    "en": "Testimonials",
+    en: "Testimonials",
     "es-MX": "Testimonios",
   },
   articles: {
-    "en": "Articles",
+    en: "Articles",
     "es-MX": "Articulos",
   },
   prices: {
-    "en": "Price",
+    en: "Price",
     "es-MX": "Precio",
   },
   share: {
-    "en": "Share",
+    en: "Share",
     "es-MX": "Compartir",
   },
   categories: {
-    "en": "Categories",
+    en: "Categories",
     "es-MX": "Categorias",
   },
 };
 
 export const heroTitles = {
   subtitle: {
-    "en": "Beauty Salon",
+    en: "Beauty Salon",
     "es-MX": "Salon De Belleza",
   },
 };
 
 export const buttonLabels = {
   bookNow: {
-    "en": "Book now",
+    en: "Book now",
     "es-MX": "Reservar ahora",
   },
   scrollDown: {
-    "en": "Learn more",
+    en: "Learn more",
     "es-MX": "Aprende más",
   },
   readMore: {
-    "en": "Read more",
+    en: "Read more",
     "es-MX": "Leer más",
   },
   scrollUp: {
-    "en": "Go up",
+    en: "Go up",
     "es-MX": "Arriba",
+  },
+  backToServices: {
+    en: "Back to services",
+    "es-MX": "Regresar a servicios",
+  },
+  backToBlog: {
+    en: "Back to blog",
+    "es-MX": "Regresar a blog",
   },
 };
