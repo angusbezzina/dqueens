@@ -23,7 +23,7 @@ const Share = ({ url, title }: ShareProps) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FontAwesomeIcon icon={faFacebook} className="text-2xl mx-5" />
+            <FontAwesomeIcon icon={faFacebook} className="h-4 md:h-8 mx-5" />
           </a>
         </li>
         <li>
@@ -33,7 +33,7 @@ const Share = ({ url, title }: ShareProps) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FontAwesomeIcon icon={faTwitter} className="text-2xl mx-5" />
+            <FontAwesomeIcon icon={faTwitter} className="h-4 md:h-8 mx-5" />
           </a>
         </li>
         <li>
@@ -43,7 +43,7 @@ const Share = ({ url, title }: ShareProps) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FontAwesomeIcon icon={faLinkedin} className="text-2xl mx-5" />
+            <FontAwesomeIcon icon={faLinkedin} className="h-4 md:h-8 mx-5" />
           </a>
         </li>
       </ul>

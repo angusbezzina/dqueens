@@ -68,7 +68,6 @@ const Blog: NextPage = ({
   useEffect(() => {
     const resultList = articulos?.data
       .filter((articulo: any) => {
-        console.log(articulo);
         const {
           attributes: { categoria_de_articulos: categorias },
         } = articulo;

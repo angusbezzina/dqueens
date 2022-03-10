@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPhone,
@@ -14,9 +14,9 @@ interface AddressBarProps {
   contactDetails: any;
 }
 
-const AddressBar = ({ contactDetails }: AddressBarProps ) => {
+const AddressBar = ({ contactDetails }: AddressBarProps) => {
   const { locale } = useRouter();
-  const language = locale === 'en' ? 'en' : 'es-MX';
+  const language = locale === "en" ? "en" : "es-MX";
 
   const {
     attributes: {
@@ -36,14 +36,18 @@ const AddressBar = ({ contactDetails }: AddressBarProps ) => {
           href={`tel:+${numeroDeTelefono.replace(/ /g, "")}`}
           className="flex items-center hover hover:ease-in hover:duration-300 hover:text-primary"
         >
-          <FontAwesomeIcon icon={faPhone} className="h-4 w-12 mr-5" />+
+          <div className="flex items-center justify-start w-6 mr-2">
+            <FontAwesomeIcon icon={faPhone} className="w-4  " />+
+          </div>
           {numeroDeTelefono}
         </a>
         <a
           href={`mailto:${correoElectronico}`}
           className="flex items-center hover hover:text-primary"
         >
-          <FontAwesomeIcon icon={faEnvelope} className="h-4 w-12 mr-5" />
+          <div className="flex items-center justify-start w-6 mr-2">
+            <FontAwesomeIcon icon={faEnvelope} className="w-4  " />
+          </div>
           {correoElectronico}
         </a>
         <a
@@ -53,7 +57,9 @@ const AddressBar = ({ contactDetails }: AddressBarProps ) => {
           )}`}
           className="flex items-center hover hover:text-primary"
         >
-          <FontAwesomeIcon icon={faWhatsapp} className="h-4 w-12 mr-5" />
+          <div className="flex items-center justify-start w-6 mr-2">
+            <FontAwesomeIcon icon={faWhatsapp} className="w-4  " />
+          </div>
           WhatsApp
         </a>
         <a
@@ -62,8 +68,10 @@ const AddressBar = ({ contactDetails }: AddressBarProps ) => {
           rel="noreferrer"
           className="flex items-center hover hover:text-primary"
         >
-          <FontAwesomeIcon icon={faMapMarkerAlt} className="h-4 w-12 mr-5" />
-          <p className="inline-block max-w-sm">{formatMarkdown(direccion)}</p>
+          <div className="flex items-center justify-start w-6 mr-2">
+            <FontAwesomeIcon icon={faMapMarkerAlt} className="w-4  " />
+          </div>
+          <p className="inline-block max-w-xs">{formatMarkdown(direccion)}</p>
         </a>
       </address>
     </div>

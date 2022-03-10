@@ -17,7 +17,15 @@ interface FooterProps {
 
 const Footer = ({ socialDetails }: FooterProps) => {
   const {
-    attributes: { horario, instagram, facebook, twitter, youTube, tikTok, pinterest },
+    attributes: {
+      horario,
+      instagram,
+      facebook,
+      twitter,
+      youTube,
+      tikTok,
+      pinterest,
+    },
   } = socialDetails;
 
   return (
@@ -29,7 +37,7 @@ const Footer = ({ socialDetails }: FooterProps) => {
         <div className="absolute left-24 text-sm max-w-xxs hidden md:inline-block">
           {horario}
         </div>
-        <div className="flex items-center justify-center">
+        <div className="w-full flex items-center text-white justify-center">
           <a
             href={instagram}
             className="hover hover:text-secondary"
@@ -38,7 +46,7 @@ const Footer = ({ socialDetails }: FooterProps) => {
           >
             <FontAwesomeIcon
               icon={faInstagram}
-              className="inline-block text-lg mx-2 md:mx-4 md:text-2xl"
+              className="inline-block mx-2 md:mx-4 h-4 md:h-6"
             />
           </a>
           <a
@@ -49,7 +57,7 @@ const Footer = ({ socialDetails }: FooterProps) => {
           >
             <FontAwesomeIcon
               icon={faFacebook}
-              className="inline-block text-lg mx-2 md:mx-4 md:text-2xl w-12"
+              className="inline-block mx-2 md:mx-4 h-4 md:h-6"
             />
           </a>
           {twitter && (
@@ -61,20 +69,20 @@ const Footer = ({ socialDetails }: FooterProps) => {
             >
               <FontAwesomeIcon
                 icon={faTwitter}
-                className="inline-block text-lg mx-2 md:mx-4 md:text-2xl w-12"
+                className="inline-block mx-2 md:mx-4 h-4 md:h-6"
               />
             </a>
           )}
           {tikTok && (
             <a
-              href={twitter}
+              href={tikTok}
               className="hover hover:text-secondary"
               target="_blank"
               rel="noreferrer"
             >
               <FontAwesomeIcon
                 icon={faTiktok}
-                className="inline-block text-lg mx-2 md:mx-4 md:text-2xl w-12"
+                className="inline-block mx-2 md:mx-4 h-4 md:h-6"
               />
             </a>
           )}
@@ -87,7 +95,7 @@ const Footer = ({ socialDetails }: FooterProps) => {
             >
               <FontAwesomeIcon
                 icon={faPinterest}
-                className="inline-block text-lg mx-2 md:mx-4 md:text-2xl w-12"
+                className="inline-block mx-2 md:mx-4 h-4 md:h-6"
               />
             </a>
           )}
@@ -100,7 +108,7 @@ const Footer = ({ socialDetails }: FooterProps) => {
             >
               <FontAwesomeIcon
                 icon={faYoutube}
-                className="inline-block text-lg mx-2 md:mx-4 md:text-2xl w-12"
+                className="inline-block mx-2 md:mx-4 h-4 md:h-6"
               />
             </a>
           )}
