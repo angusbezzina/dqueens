@@ -24,7 +24,7 @@ const Blog: NextPage = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { locale } = useRouter();
   const language = locale === "en" ? "en" : "es-MX";
-  const [activeCategories, setActiveCategories] = useState(["all"]);
+  const [activeCategory, setActiveCategory] = useState("all");
   const [results, setResults] = useState([]);
   const {
     getResults,
@@ -34,17 +34,6 @@ const Blog: NextPage = ({
     pageForwards,
     pageBackwards,
   } = usePagination(results);
-  const filterResults = (category: string) => {
-    if (activeCategories.includes(category)) {
-      const newCategories = activeCategories.filter(
-        (activeCategory: string) => activeCategory !== category
-      );
-      setActiveCategories(newCategories);
-    } else {
-      const newCategories = [...activeCategories, category];
-      setActiveCategories(newCategories);
-    }
-  };
 
   const {
     data: {
@@ -73,11 +62,10 @@ const Blog: NextPage = ({
         } = articulo;
 
         if (
-          !activeCategories.length ||
-          (!activeCategories.includes("all") &&
-            !categorias?.data.some((category: any) =>
-              activeCategories.includes(category?.attributes.titulo)
-            ))
+          activeCategory !== "all" &&
+          !categorias?.data.some(
+            (category: any) => activeCategory === category?.attributes.titulo
+          )
         ) {
           return false;
         }
@@ -89,13 +77,12 @@ const Blog: NextPage = ({
         const dateB: any = new Date(b?.attributes?.updatedAt);
 
         return dateB - dateA;
-      }
-      );
+      });
 
     setResults(resultList);
 
     return () => {};
-  }, [activeCategories, articulos]);
+  }, [activeCategory, articulos]);
 
   return (
     <Page
@@ -121,11 +108,11 @@ const Blog: NextPage = ({
         <div className="max-w-full mx-auto overflow-x-auto">
           <button
             className={`rounded-lg border-2 text-lg px-5 py-2 mr-2 border-secondary ${
-              activeCategories.includes("all")
+              activeCategory === "all"
                 ? "bg-secondary text-white"
                 : "bg-white text-secondary"
             } `}
-            onClick={() => filterResults("all")}
+            onClick={() => setActiveCategory("all")}
             data-category="all"
           >
             All
@@ -141,11 +128,11 @@ const Blog: NextPage = ({
                 <button
                   key={id}
                   className={`rounded-lg text-xl border-2 px-5 py-2 mr-2 border-secondary ${
-                    activeCategories.includes(titulo)
+                    activeCategory === titulo
                       ? "bg-secondary text-white"
                       : "bg-white text-secondary"
                   }`}
-                  onClick={() => filterResults(titulo)}
+                  onClick={() => setActiveCategory(titulo)}
                   data-category={titulo}
                 >
                   {titulo}
