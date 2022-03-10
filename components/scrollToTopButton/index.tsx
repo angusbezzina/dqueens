@@ -63,20 +63,20 @@ const ScrollToTopButton = () => {
       className={`${
         visible ? "flex flex-row" : "hide"
       } fixed bottom-4 md:bottom-5 ${
-        chameleonText ? "chameleonText" : ""
+        chameleonText
+          ? "chameleonText text-secondary"
+          : " text-white hover:text-secondary"
       } text-secondary scroll-up items-center z-40`}
       onClick={scrollToTop}
       type="button"
     >
-      <p
-        className={`inline text mr-2 ${chameleonText ? "text-secondary" : "text-white"}`}
-      >
-        {buttonLabels.scrollUp[language]}
-      </p>
+      <p className={`inline text mr-2`}>{buttonLabels.scrollUp[language]}</p>
       <FontAwesomeIcon
         icon={faHandPointUp}
         className={`inline h-4 link-hover-animated ${
-          chameleonText ? "text-secondary" : "text-white"
+          chameleonText
+            ? "chameleonText text-secondary"
+            : ""
         }`}
       />
     </button>
