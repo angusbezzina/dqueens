@@ -9,7 +9,7 @@ const Logo = ({ size, className }: LogoProps) => {
   return size === "large" ? (
     <Image
       className={className}
-      src="/dqueens.png"
+      src="/dqueens_logo.png"
       alt="D'Queens Logo Header"
       layout="fixed"
       height="64"
@@ -19,7 +19,7 @@ const Logo = ({ size, className }: LogoProps) => {
   ) : (
     <Image
       className={className}
-      src="/dqueens.png"
+      src="/dqueens_logo.png"
       alt="D'Queens Logo Footer"
       layout="fixed"
       height="40"
